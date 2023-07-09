@@ -31,6 +31,16 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
+//https://spring.io/guides/gs/testing-web/
+//Another useful approach is to not start the server at all but to test only the layer below that, where Spring 
+//handles the incoming HTTP request and hands it off to your controller. 
+//That way, almost of the full stack is used, and your code will be called in exactly the same way 
+//as if it were processing a real HTTP request but without the cost of starting the server. To do that, 
+//use Spring’s MockMvc and ask for that to be injected for you by using the @AutoConfigureMockMvc annotation on the test case.
+//In this test, the full Spring application context is started but without the server. We can narrow the 
+//tests to only the web layer by using @WebMvcTest
+// @WebMvcTest + @AutoConfigureMockMvc + MockMvc
+
 @WebMvcTest(controllers = PokemonController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
@@ -38,6 +48,11 @@ public class PokemonControllerTests {
     @Autowired
     private MockMvc mockMvc;
 
+    //1. @MockBean is Spring's annotation
+    //2. We can use the @MockBean to add mock objects to the Spring application context. 
+    //The mock will replace any existing bean of the same type in the application context.
+    //If no bean of the same type is defined, a new one will be added. 
+    //This annotation is useful in integration tests where a particular bean, like an external service, needs to be mocked.
     @MockBean
     private PokemonService pokemonService;
 

@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 //The default value is embedded,
 //meaning it will only execute for an embedded database (i.e. in our tests). If we set it to always, it will always execute.
 @SpringBootApplication
-@EnableJpaAuditing
 public class ApiApplication {
 
 	public static void main(String[] args) {

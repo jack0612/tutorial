@@ -1,12 +1,14 @@
 package com.pokemonreview.api;
 
+import com.pokemonreview.api.Jpa.Auditing.Auditable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class EmailUser {
+public class EmailUser extends Auditable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
