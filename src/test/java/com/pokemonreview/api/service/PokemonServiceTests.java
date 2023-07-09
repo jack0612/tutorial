@@ -21,12 +21,15 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
+//@RunWith is an old annotation from JUnit 4 to use test runners. If you're using JUnit 5 (Jupiter), 
+//you should use @ExtendWith to use JUnit extensions.
 @ExtendWith(MockitoExtension.class)
 public class PokemonServiceTests {
-
+	//@Mock annotation is  to create a mock object
     @Mock
     private PokemonRepository pokemonRepository;
-
+    //https://www.geeksforgeeks.org/difference-between-mock-and-injectmocks-in-mockito/
+    //@InjectMocks annotation is  to create a instance and inject the mocks created with the @Mock annotations into this instance.
     @InjectMocks
     private PokemonServiceImpl pokemonService;
 

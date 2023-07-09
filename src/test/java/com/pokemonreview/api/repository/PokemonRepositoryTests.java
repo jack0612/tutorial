@@ -12,6 +12,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.Optional;
 
+//https://reflectoring.io/spring-boot-data-jpa-test/
+//In Spring boot applications, we can use @DataJpaTest annotation that focuses only on testing the JPA components. 
+//@DataJpaTest will disable full auto-configuration of the application context and 
+//instead apply only configuration relevant to JPA components and tests.
+//By default, it scans for @Entity classes and configures Spring Data JPA repositories annotated with @Repository annotation.
+
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class PokemonRepositoryTests {

@@ -55,6 +55,8 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		<!--  spring-boot-starter-test dependency brings in both Junit and Mockito JAR. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -65,14 +67,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>-->
-		<!--
+	
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>2.1.214</version>
 			<scope>test</scope>
 		</dependency>
--->
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
