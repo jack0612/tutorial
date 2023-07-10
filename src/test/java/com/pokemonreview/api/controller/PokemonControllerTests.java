@@ -30,7 +30,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-
+//https://www.baeldung.com/bdd-mockito
 //https://spring.io/guides/gs/testing-web/
 //Another useful approach is to not start the server at all but to test only the layer below that, where Spring 
 //handles the incoming HTTP request and hands it off to your controller. 
@@ -40,7 +40,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 //In this test, the full Spring application context is started but without the server. We can narrow the 
 //tests to only the web layer by using @WebMvcTest
 // @WebMvcTest + @AutoConfigureMockMvc + MockMvc
-
+//@Mock + @InjectMocks==>@MockBean + @Autowired
 @WebMvcTest(controllers = PokemonController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
@@ -74,7 +74,7 @@ public class PokemonControllerTests {
     @Test
     public void PokemonController_CreatePokemon_ReturnCreated() throws Exception {
         given(pokemonService.createPokemon(ArgumentMatchers.any())).willAnswer((invocation -> invocation.getArgument(0)));
-
+        //given().willAnswer(): BBDMorckito
         ResultActions response = mockMvc.perform(post("/api/pokemon/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(pokemonDto)));
@@ -88,7 +88,7 @@ public class PokemonControllerTests {
     public void PokemonController_GetAllPokemon_ReturnResponseDto() throws Exception {
         PokemonResponse responseDto = PokemonResponse.builder().pageSize(10).last(true).pageNo(1).content(Arrays.asList(pokemonDto)).build();
         when(pokemonService.getAllPokemon(1,10)).thenReturn(responseDto);
-
+        //when().thenReturn()" Morckito
         ResultActions response = mockMvc.perform(get("/api/pokemon")
                 .contentType(MediaType.APPLICATION_JSON)
                 .param("pageNo","1")
