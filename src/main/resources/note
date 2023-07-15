@@ -30,4 +30,17 @@ spring boot 3 security
 		</dependency>
 http://localhost:8083/swagger-ui/index.html
 
+6. https://reflectoring.io/spring-boot-web-controller-test/
+	@WebMvcTest 
+	annotation to fire up an application context that contains only the beans needed for testing 
+	a web controller:
+	
+	 UserResource user = new UserResource("Zaphod", "zaphod@galaxy.net");
+  
+   mockMvc.perform(post("/forums/{forumId}/register", 42L)
+        .contentType("application/json")
+        .param("sendWelcomeMail", "true")
+        .content(objectMapper.writeValueAsString(user)))
+        .andExpect(status().isOk());
+
 	  
