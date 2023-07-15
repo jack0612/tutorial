@@ -1,0 +1,33 @@
+1) .antMatchers("/**").permitAll()	//antPattern “/**” means all routes at the current and nested levels,
+	        								//We instruct Spring Security to allow any type of access 
+	        								//by using permitAll() method,
+2)The httpBasic() method enables the Basic HTTP security in our application.
+3)https://kostis.hashnode.dev/csrf-configuration-for-angular-spring-boot-application
+ @Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+  @Bean
+  public CsrfTokenRepository csrfTokenRepository() {
+    CookieCsrfTokenRepository repository = CookieCsrfTokenRepository.withHttpOnlyFalse();
+    repository.setCookiePath("/");
+    return repository;
+  }
+
+  @Override
+  protected void configure(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity.csrf().csrfTokenRepository(csrfTokenRepository());
+    // Rest of security configuration
+  }
+}
+4. 	 https://medium.com/@thecodinganalyst/configure-spring-security-csrf-for-testing-on-swagger-e9e6461ee0c1
+spring boot 3 security
+
+5. swagger
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+http://localhost:8083/swagger-ui/index.html
+
+	  
