@@ -43,4 +43,9 @@ http://localhost:8083/swagger-ui/index.html
         .content(objectMapper.writeValueAsString(user)))
         .andExpect(status().isOk());
 
+7.https://stackoverflow.com/questions/59044876/whats-the-different-between-oauth2login-and-oauth2client-what-are-the-use-case
+oauth2Login() will authenticate the user with OAuth2 (or OIDC), populating Spring's Principal with the information
+ from either the JWT or the userInfo endpoint. 
+ oauth2Client() won't authenticate the user but will seek permission from the OAuth2 authorization server for the resources 
+ (scopes) it needs to access. With oauth2Client() you'll still need to authenticate the user, for example via formLogin().
 	  
