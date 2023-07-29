@@ -16,7 +16,8 @@ import java.util.Optional;
 
 //@DataJpaTest
 //@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-@SpringBootTest
+//@SpringBootTest
+@DataJpaTest
 public class OneToFewTests {
 
 	@Autowired

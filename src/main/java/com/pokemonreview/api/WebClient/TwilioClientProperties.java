@@ -1,7 +1,9 @@
 package com.pokemonreview.api.WebClient;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
+@Component
 @ConfigurationProperties(prefix="twilio-api")
 public class TwilioClientProperties {
 	private String baseUrl;

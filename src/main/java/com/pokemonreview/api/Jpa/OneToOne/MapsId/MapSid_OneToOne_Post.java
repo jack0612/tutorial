@@ -4,12 +4,15 @@ package com.pokemonreview.api.Jpa.OneToOne.MapsId;
 //https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.ToString;
  
 
  
 @Entity
+@Builder
  
-public class OneToOnePost {
+public class MapSid_OneToOne_Post {
 
 
     @Id
@@ -21,20 +24,21 @@ public class OneToOnePost {
   
     @OneToOne(
         mappedBy = "post",
-        fetch = FetchType.LAZY,
+        fetch = FetchType.LAZY, cascade = CascadeType.ALL,
         optional = false
     )
-    private OneToOnePostDetail detail;
+    @PrimaryKeyJoinColumn
+    private Mapsid_OneToOne_PostDetail detail;
 
 
 
-	public OneToOnePost() {
+	public MapSid_OneToOne_Post() {
 		super();
 	}
 
 
 
-	public OneToOnePost(Long id, String title, OneToOnePostDetail detail) {
+	public MapSid_OneToOne_Post(Long id, String title, Mapsid_OneToOne_PostDetail detail) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -67,14 +71,21 @@ public class OneToOnePost {
 
 
 
-	public OneToOnePostDetail getDetail() {
+	public Mapsid_OneToOne_PostDetail getDetail() {
 		return detail;
 	}
 
 
 
-	public void setDetail(OneToOnePostDetail detail) {
+	public void setDetail(Mapsid_OneToOne_PostDetail detail) {
 		this.detail = detail;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "MapSid_OneToOne_Post [id=" + id + ", title=" + title + ", detail=" + detail + "]";
 	}
 
  

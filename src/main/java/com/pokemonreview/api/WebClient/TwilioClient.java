@@ -1,5 +1,6 @@
 package com.pokemonreview.api.WebClient;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TwilioClient {
 	private final WebClient webClient;
+	@Autowired
     private final TwilioClientProperties properties;
 
     public void sendSms(String from, String to, String message) {
