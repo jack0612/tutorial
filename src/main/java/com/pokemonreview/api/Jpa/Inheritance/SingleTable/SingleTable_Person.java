@@ -8,9 +8,8 @@ import jakarta.persistence.*;
 @DiscriminatorColumn(name = "PERSON_STATUS")
 public abstract class SingleTable_Person {
 
-	@TableGenerator(name = "PERSON_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", allocationSize = 1)
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PERSON_GEN")
+	@GeneratedValue
 	private String name;
 	private String address;
 	private String phone;
