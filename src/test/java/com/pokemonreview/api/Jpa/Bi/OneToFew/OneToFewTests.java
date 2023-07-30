@@ -21,7 +21,7 @@ import java.util.Optional;
 public class OneToFewTests {
 
 	@Autowired
-	private PostRepository postRepository;
+	private Bi_OneToMany_PostRepository bi_OneToMany_PostRepository;
 
 	@Test
 	public void PostRepository_Save_ReturnSavedPost() {
@@ -32,7 +32,7 @@ public class OneToFewTests {
 		post.addComment(new Bi_OneToMany_Comment("My second review"));
 		post.addComment(new Bi_OneToMany_Comment("My third review"));
 
-		Bi_OneToMany_Post savedPost = this.postRepository.save(post);
+		Bi_OneToMany_Post savedPost = this.bi_OneToMany_PostRepository.save(post);
 		// Assert
 		Assertions.assertThat(savedPost).isNotNull();
 		Assertions.assertThat(savedPost.getId()).isGreaterThan(0);
