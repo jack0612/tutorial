@@ -1,5 +1,9 @@
 package com.pokemonreview.api.Jpa.OneToOne.MapsId;
 
+ 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 //https://github.com/vladmihalcea/high-performance-java-persistence/blob/master/core/src/main/java/com/vladmihalcea/hpjp/hibernate/forum/Post.java
 //https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/
 
@@ -28,6 +32,7 @@ public class MapSid_OneToOne_Post {
         optional = false
     )
     @PrimaryKeyJoinColumn
+	@Fetch(FetchMode.JOIN)
     private Mapsid_OneToOne_PostDetail detail;
 
 
