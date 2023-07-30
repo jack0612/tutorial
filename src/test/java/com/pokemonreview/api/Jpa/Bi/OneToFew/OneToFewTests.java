@@ -21,18 +21,18 @@ import java.util.Optional;
 public class OneToFewTests {
 
 	@Autowired
-	private Bi_OneToMany_PostRepository bi_OneToMany_PostRepository;
+	private Bi_OneToFew_PostRepository bi_OneToFew_PostRepository;
 
 	@Test
 	public void PostRepository_Save_ReturnSavedPost() {
 
-		Bi_OneToMany_Post post = new Bi_OneToMany_Post("First post");
+		Bi_OneToFew_Post post = new Bi_OneToFew_Post("First post");
 
-		post.addComment(new Bi_OneToMany_Comment("My first review"));
-		post.addComment(new Bi_OneToMany_Comment("My second review"));
-		post.addComment(new Bi_OneToMany_Comment("My third review"));
+		post.addComment(new Bi_OneToFew_Comment("My first review"));
+		post.addComment(new Bi_OneToFew_Comment("My second review"));
+		post.addComment(new Bi_OneToFew_Comment("My third review"));
 
-		Bi_OneToMany_Post savedPost = this.bi_OneToMany_PostRepository.save(post);
+		Bi_OneToFew_Post savedPost = this.bi_OneToFew_PostRepository.save(post);
 		// Assert
 		Assertions.assertThat(savedPost).isNotNull();
 		Assertions.assertThat(savedPost.getId()).isGreaterThan(0);

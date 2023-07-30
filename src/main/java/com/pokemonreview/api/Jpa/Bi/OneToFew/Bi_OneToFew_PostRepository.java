@@ -1,8 +1,7 @@
-
 package com.pokemonreview.api.Jpa.Bi.OneToFew;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public   interface Bi_OneToMany_PostCommentRepository extends JpaRepository<Bi_OneToMany_Comment, Long> {
+public   interface Bi_OneToFew_PostRepository extends JpaRepository<Bi_OneToFew_Post, Long> {
 
 }

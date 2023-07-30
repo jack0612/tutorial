@@ -15,11 +15,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-//Bi_OneToMany_Post is owning side
+//Uni_ManyToOne_Post is owning side
 @Getter
 @Setter
-@Entity(name = "Bi_OneToMany_Post")
-public class Bi_OneToMany_Post {
+@Entity
+public class Bi_OneToFew_Post {
 
 	@Id
 	@GeneratedValue
@@ -29,21 +29,21 @@ public class Bi_OneToMany_Post {
 	
 
 	@OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.DETACH}, orphanRemoval = true)
-	private List<Bi_OneToMany_Comment> comments = new ArrayList<>();
+	private List<Bi_OneToFew_Comment> comments = new ArrayList<>();
 
 	// Constructors, getters and setters removed for brevity
 
-	public void addComment(Bi_OneToMany_Comment comment) {
+	public void addComment(Bi_OneToFew_Comment comment) {
 		comments.add(comment);
 		comment.setPost(this);
 	}
 
-	public void removeComment(Bi_OneToMany_Comment comment) {
+	public void removeComment(Bi_OneToFew_Comment comment) {
 		comments.remove(comment);
 		comment.setPost(null);
 	}
 
-	public Bi_OneToMany_Post(String title) {
+	public Bi_OneToFew_Post(String title) {
 		super();
 		this.title = title;
 	}
