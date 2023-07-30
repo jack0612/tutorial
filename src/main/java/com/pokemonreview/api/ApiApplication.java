@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.pokemonreview.api.Jpa.OneToOne.MapsId.Mapsid_OneToOne_Service;
+import com.pokemonreview.api.Jpa.Query.JoinQueryService;
 import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_Service;
 import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_User;
 import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_UserRepository;
@@ -30,6 +31,9 @@ public class ApiApplication implements CommandLineRunner{
 	UniOneToOne_Service service;
 	@Autowired
 	Mapsid_OneToOne_Service mapsidService;
+	@Autowired
+	JoinQueryService joinQueryService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 	}
@@ -46,6 +50,7 @@ public class ApiApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		System.out.println("=====================CommandLineRunner");
 		mapsidService.doService();
+		joinQueryService.doService();
 		//service.service();
 		
 	}

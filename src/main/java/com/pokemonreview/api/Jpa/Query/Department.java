@@ -1,6 +1,6 @@
 package com.pokemonreview.api.Jpa.Query;
  
-
+//https://github.com/roytuts/spring-jpa/blob/master/spring-data-jpa-left-right-inner-cross-join/spring-data-join.sql
 import java.io.Serializable;
 import java.util.Set;
 
@@ -16,7 +16,7 @@ public class Department implements Serializable {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private long id;
 
 	@Column(name = "name")
@@ -27,6 +27,26 @@ public class Department implements Serializable {
 
 	@OneToMany(targetEntity = Employee.class, mappedBy = "department", orphanRemoval = false, fetch = FetchType.LAZY)
 	private Set<Employee> employees;
+	
+	
+
+	public Department() {
+		super();
+	}
+
+	public Department(long id, String name, String description, Set<Employee> employees) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.employees = employees;
+	}
+
+	public Department(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
 
 	public long getId() {
 		return id;
