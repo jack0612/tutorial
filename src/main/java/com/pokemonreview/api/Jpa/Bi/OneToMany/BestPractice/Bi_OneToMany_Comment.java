@@ -20,6 +20,7 @@ public class Bi_OneToMany_Comment {
 
 	private String review;
 
+	//In a One-to-Many/Many-to-One relationship, the owning side is usually defined on the many side of the relationship. 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_post_id")
 	private Bi_OneToMany_Post post;

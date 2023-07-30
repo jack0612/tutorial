@@ -34,7 +34,18 @@ public class Bi_OneToMany_Post {
 3)bidirectional assocoation needs help functions
 
 	 */
+	/*
+	 * https://www.baeldung.com/jpa-joincolumn-vs-mappedby
+	 JPA Relationships can be either unidirectional or bidirectional. This simply means we can model them as an attribute on exactly one of the associated entities or both.
 
+	Defining the direction of the relationship between entities has no impact on the database mapping. It only defines the directions in which we use that relationship in our domain model.
+
+	For a bidirectional relationship, we usually define
+
+	the owning side
+	inverse or the referencing side
+	 */
+	// the mappedBy attribute is used to define the referencing side (non-owning side) of the relationship.
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.DETACH}, orphanRemoval = true)
 	private List<Bi_OneToMany_Comment> comments = new ArrayList<>();
 

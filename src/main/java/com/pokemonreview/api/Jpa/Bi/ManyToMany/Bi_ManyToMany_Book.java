@@ -1,4 +1,4 @@
-package com.pokemonreview.api.Jpa.Bi.ManyToMAny;
+package com.pokemonreview.api.Jpa.Bi.ManyToMany;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,11 @@ public class Bi_ManyToMany_Book {
 
 	private String title;
 
-	@ManyToMany
-	@JoinTable(name = "bi_many_to_many_book_author", 
+	//owning side
+	//https://www.infoworld.com/article/3387643/java-persistence-with-jpa-and-hibernate-part-2-many-to-many-relationships.html
+	// In lazy case,  when we retrieve a Book from the database, we will NOT   automatically retrieve all of its corresponding authors.
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.DETACH})
+	@JoinTable( 
 				joinColumns = { @JoinColumn(name = "fk_book") }, 
 				inverseJoinColumns = { @JoinColumn(name = "fk_author") })
 	private List<Bi_ManyToMany_Author> authors = new ArrayList<>();

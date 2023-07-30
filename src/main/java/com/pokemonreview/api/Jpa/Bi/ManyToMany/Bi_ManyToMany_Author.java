@@ -1,4 +1,4 @@
-package com.pokemonreview.api.Jpa.Bi.ManyToMAny;
+package com.pokemonreview.api.Jpa.Bi.ManyToMany;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,15 @@ public class Bi_ManyToMany_Author {
 
 	private String lastName;
 
-	@ManyToMany(mappedBy="authors")
+	//Defining the direction of the relationship between entities has no impact on the database mapping.
+	//It only defines the directions in which we use that relationship in our domain model.
+	//For a bidirectional relationship, we usually define
+	//	the owning side
+	//	inverse or the referencing side
+	//the mappedBy attribute is used to define the referencing side (non-owning side) of the relationship.
+	//bi_many_to_many_book_authors table will be created
+	@ManyToMany(mappedBy="authors",fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.DETACH})
+	//	// In lazy case,  when we retrieve an Author from the database, we will NOT   automatically retrieve all of its corresponding books.
 	private List<Bi_ManyToMany_Book> books = new ArrayList<>();
 
 	public Long getId() {
