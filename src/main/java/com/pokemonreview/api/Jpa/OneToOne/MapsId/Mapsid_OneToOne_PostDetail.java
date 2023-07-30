@@ -13,7 +13,7 @@ import lombok.Data;
 @Builder
 public class Mapsid_OneToOne_PostDetail {
  
-    public Mapsid_OneToOne_PostDetail(Long id, String detail, MapSid_OneToOne_Post post) {
+    public Mapsid_OneToOne_PostDetail(Long id, String detail, Mapsid_OneToOne_Post post) {
 		super();
 		this.detail_id = id;
 		this.detail = detail;
@@ -28,7 +28,7 @@ public class Mapsid_OneToOne_PostDetail {
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     //@JoinColumn(name = "detail_id")
-    private MapSid_OneToOne_Post post;
+    private Mapsid_OneToOne_Post post;
  
     public Mapsid_OneToOne_PostDetail() {}
 
@@ -48,11 +48,11 @@ public class Mapsid_OneToOne_PostDetail {
 		this.detail = detail;
 	}
 
-	public MapSid_OneToOne_Post getPost() {
+	public Mapsid_OneToOne_Post getPost() {
 		return post;
 	}
 
-	public void setPost(MapSid_OneToOne_Post post) {
+	public void setPost(Mapsid_OneToOne_Post post) {
 		this.post = post;
 	}
 

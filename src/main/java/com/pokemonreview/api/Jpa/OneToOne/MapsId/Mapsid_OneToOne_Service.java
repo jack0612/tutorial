@@ -17,7 +17,7 @@ public class Mapsid_OneToOne_Service {
 	MapSid_OneToOne_PostDetailRepository postDetailRepository;
 
 	public void doService() {
-		MapSid_OneToOne_Post post = MapSid_OneToOne_Post.builder().title("title").build();
+		Mapsid_OneToOne_Post post = Mapsid_OneToOne_Post.builder().title("title").build();
 		Mapsid_OneToOne_PostDetail detail = Mapsid_OneToOne_PostDetail.builder().detail("detail").build();
 		post.setDetail(detail);
 		detail.setPost(post);
@@ -25,7 +25,7 @@ public class Mapsid_OneToOne_Service {
 		postRepository.flush();
 		System.out.println("aaaaaaaaaaaa" + post);
 		logger.debug("bbbbbbb" + post);
-		List<MapSid_OneToOne_Post> savedPosts = postRepository.findAll();
+		List<Mapsid_OneToOne_Post> savedPosts = postRepository.findAll();
 		savedPosts.forEach((p) -> {
 			System.out.println("cccccccccccc" + p);
 		});
@@ -34,7 +34,7 @@ public class Mapsid_OneToOne_Service {
 			System.out.println("dddddd" + optionalDetail.orElse(new Mapsid_OneToOne_PostDetail()));
 		}
 
-		for (MapSid_OneToOne_Post post1 : savedPosts) {
+		for (Mapsid_OneToOne_Post post1 : savedPosts) {
 
 			System.out.println("===================" + post1);
 		}

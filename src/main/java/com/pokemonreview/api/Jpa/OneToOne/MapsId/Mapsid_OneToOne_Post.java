@@ -16,7 +16,7 @@ import lombok.ToString;
 @Entity
 @Builder
  
-public class MapSid_OneToOne_Post {
+public class Mapsid_OneToOne_Post {
 
 
     @Id
@@ -37,13 +37,13 @@ public class MapSid_OneToOne_Post {
 
 
 
-	public MapSid_OneToOne_Post() {
+	public Mapsid_OneToOne_Post() {
 		super();
 	}
 
 
 
-	public MapSid_OneToOne_Post(Long id, String title, Mapsid_OneToOne_PostDetail detail) {
+	public Mapsid_OneToOne_Post(Long id, String title, Mapsid_OneToOne_PostDetail detail) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -90,7 +90,7 @@ public class MapSid_OneToOne_Post {
 
 	@Override
 	public String toString() {
-		return "MapSid_OneToOne_Post [id=" + id + ", title=" + title + ", detail=" + detail + "]";
+		return "Mapsid_OneToOne_Post [id=" + id + ", title=" + title + ", detail=" + detail + "]";
 	}
 
  

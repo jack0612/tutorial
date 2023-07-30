@@ -1,5 +1,5 @@
 package com.pokemonreview.api.Jpa.Query;
- 
+//https://roytuts.com/spring-boot-data-jpa-left-right-inner-and-cross-join-examples/
 
 import java.util.List;
  
