@@ -34,6 +34,32 @@ public class Employee implements Serializable {
 	@JoinColumn(name = "dept_id", insertable = false, updatable = false)
 	@Fetch(FetchMode.JOIN)
 	private Department department;
+	
+	
+
+	public Employee() {
+		super();
+		 
+	}
+
+	
+	public Employee(String name, String email, String address) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.address = address;
+	}
+
+
+	public Employee(long id, String name, String email, String address, Department department) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.address = address;
+		this.department = department;
+	}
+
 
 	public long getId() {
 		return id;

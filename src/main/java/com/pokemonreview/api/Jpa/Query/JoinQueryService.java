@@ -41,5 +41,12 @@ public class JoinQueryService {
 		list.forEach(l -> System.out.println(l));
 		return list;
 	}
+	
+	public void doService() {
+	 
+ 
+		List<DeptEmpDto> list=this.getDeptEmployeesInnerJoin();
+		
+	}
 
 }
