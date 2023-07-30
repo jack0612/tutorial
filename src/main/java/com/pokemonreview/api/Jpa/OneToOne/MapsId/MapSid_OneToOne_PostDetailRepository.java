@@ -14,6 +14,6 @@ public interface MapSid_OneToOne_PostDetailRepository extends JpaRepository<Maps
 	@Query(value = "SELECT * FROM Mapsid_One_To_One_Post_Detail", nativeQuery = true)
 	List<Mapsid_OneToOne_PostDetail> findAllNative();
 	
-	@Query("SELECT t FROM Mapsid_OneToOne_PostDetail t WHERE t.detail >= ?1")
-	List<Mapsid_OneToOne_PostDetail> findByDetailGreaterThanEqual(String detail);
+	@Query("SELECT t FROM Mapsid_OneToOne_PostDetail t WHERE t.detail = ?1")
+	List<Mapsid_OneToOne_PostDetail> findByDetailEqual(String detail);
 }

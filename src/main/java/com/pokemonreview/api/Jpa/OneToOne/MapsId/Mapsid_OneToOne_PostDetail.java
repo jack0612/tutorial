@@ -19,7 +19,7 @@ public class Mapsid_OneToOne_PostDetail {
 		this.detail = detail;
 		this.post = post;
 	}
-
+    //detail_id is a pk and fk, whose value is equal to id of post table
 	@Id
     private Long detail_id;
     
@@ -28,6 +28,7 @@ public class Mapsid_OneToOne_PostDetail {
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     //@JoinColumn(name = "detail_id")
+    //the column name must be the same as the field name: detail_id
     private Mapsid_OneToOne_Post post;
  
     public Mapsid_OneToOne_PostDetail() {}

@@ -20,7 +20,8 @@ public class Mapsid_OneToOne_Post {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //using @GeneratedValue(strategy = GenerationType.IDENTITY) will cause runtime exception
     private Long id;
 
     private String title;
