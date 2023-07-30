@@ -13,11 +13,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.pokemonreview.api.Jpa.OneToOne.MapsId.Mapsid_OneToOne_Service;
 import com.pokemonreview.api.Jpa.Query.JoinQueryService;
-import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_Service;
-import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_User;
-import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_UserRepository;
-import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_Vehicle;
-import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_VehicleRepository;
+ 
 
 //Spring Boot supports executing a custom schema.sql file in the classpath when the application starts up.
 //This overrides the ddl-auto configuration
@@ -27,8 +23,7 @@ import com.pokemonreview.api.Jpa.Uni.OneToOne.UniOneToOne_VehicleRepository;
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner{
 
-	@Autowired
-	UniOneToOne_Service service;
+	 
 	@Autowired
 	Mapsid_OneToOne_Service mapsidService;
 	@Autowired
@@ -51,8 +46,7 @@ public class ApiApplication implements CommandLineRunner{
 		System.out.println("=====================CommandLineRunner");
 		mapsidService.doService();
 		joinQueryService.doService();
-		//service.service();
-		
+	 
 	}
 
 }

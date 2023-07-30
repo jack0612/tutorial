@@ -1,4 +1,4 @@
-package com.pokemonreview.api.Jpa.Bi.OneToFew;
+package com.pokemonreview.api.Jpa.Bi.OneMany;
 
 
 
@@ -11,6 +11,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.pokemonreview.api.Jpa.Bi.OneToMany.BestPractice.Bi_OneToMany_Comment;
+import com.pokemonreview.api.Jpa.Bi.OneToMany.BestPractice.Bi_OneToMany_Post;
+import com.pokemonreview.api.Jpa.Bi.OneToMany.BestPractice.Bi_OneToMany_PostRepository;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -18,21 +22,21 @@ import java.util.Optional;
 //@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 //@SpringBootTest
 @DataJpaTest
-public class OneToFewTests {
+public class OneToManyTests {
 
 	@Autowired
-	private Bi_OneToFew_PostRepository bi_OneToFew_PostRepository;
+	private Bi_OneToMany_PostRepository bi_OneToMany_PostRepository;
 
 	@Test
 	public void PostRepository_Save_ReturnSavedPost() {
 
-		Bi_OneToFew_Post post = new Bi_OneToFew_Post("First post");
+		Bi_OneToMany_Post post = new Bi_OneToMany_Post("First post");
 
-		post.addComment(new Bi_OneToFew_Comment("My first review"));
-		post.addComment(new Bi_OneToFew_Comment("My second review"));
-		post.addComment(new Bi_OneToFew_Comment("My third review"));
+		post.addComment(new Bi_OneToMany_Comment("My first review"));
+		post.addComment(new Bi_OneToMany_Comment("My second review"));
+		post.addComment(new Bi_OneToMany_Comment("My third review"));
 
-		Bi_OneToFew_Post savedPost = this.bi_OneToFew_PostRepository.save(post);
+		Bi_OneToMany_Post savedPost = this.bi_OneToMany_PostRepository.save(post);
 		// Assert
 		Assertions.assertThat(savedPost).isNotNull();
 		Assertions.assertThat(savedPost.getId()).isGreaterThan(0);

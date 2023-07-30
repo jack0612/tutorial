@@ -1,4 +1,4 @@
-package com.pokemonreview.api.Jpa.Bi.OneToFew;
+package com.pokemonreview.api.Jpa.Bi.OneToMany.BestPractice;
 //https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate
 /*
  93 OneToMany or ManyToOne best practice
@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Bi_OneToFew_Post {
+public class Bi_OneToMany_Post {
 
 	@Id
 	@GeneratedValue
@@ -27,23 +27,30 @@ public class Bi_OneToFew_Post {
 
 	private String title;
 	
+	/*
+	 *93 OneToMany or ManyToOne best practice
+ 1)use FetchType.LAZY on many side ,and JPQL query with join fetch
+2) avoid CascadeType.Remove because hibernate first load then remove
+3)bidirectional assocoation needs help functions
 
-	@OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.DETACH}, orphanRemoval = true)
-	private List<Bi_OneToFew_Comment> comments = new ArrayList<>();
+	 */
+
+	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.DETACH}, orphanRemoval = true)
+	private List<Bi_OneToMany_Comment> comments = new ArrayList<>();
 
 	// Constructors, getters and setters removed for brevity
 
-	public void addComment(Bi_OneToFew_Comment comment) {
+	public void addComment(Bi_OneToMany_Comment comment) {
 		comments.add(comment);
 		comment.setPost(this);
 	}
 
-	public void removeComment(Bi_OneToFew_Comment comment) {
+	public void removeComment(Bi_OneToMany_Comment comment) {
 		comments.remove(comment);
 		comment.setPost(null);
 	}
 
-	public Bi_OneToFew_Post(String title) {
+	public Bi_OneToMany_Post(String title) {
 		super();
 		this.title = title;
 	}
