@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface MapSid_OneToOne_PostRepository extends JpaRepository<Mapsid_OneToOne_Post, Long>{
 	
-	@Query("SELECT   e FROM Mapsid_OneToOne_Post e LEFT  JOIN e.detail d")
-	List<MapSid_OneToOne_PostRepository> findAllPostAndDetails();
+	@Query("SELECT   e FROM Mapsid_OneToOne_Post e JOIN FETCH e.detail ")
+ 
+	List<Mapsid_OneToOne_Post> findAllPostAndDetails();
 }

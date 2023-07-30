@@ -33,7 +33,13 @@ public class Mapsid_OneToOne_Post {
         optional = false
     )
     @PrimaryKeyJoinColumn
-	@Fetch(FetchMode.JOIN)
+	//@Fetch(FetchMode.JOIN)
+    //here FetchMode.SUBSELECT or FetchMode.SeLECT will cause runtime error
+    //We use @Fetch to describe how Hibernate should retrieve the property when we lookup a Customer.
+    //Using SELECT indicates that the property should be loaded lazily.
+    //@BatchSize(size=10)
+    //FetchMode.JOIN loads them eagerly
+    //with FetchMode.JOIN set, FetchType is ignored and a query is always eager
     private Mapsid_OneToOne_PostDetail detail;
 
 
