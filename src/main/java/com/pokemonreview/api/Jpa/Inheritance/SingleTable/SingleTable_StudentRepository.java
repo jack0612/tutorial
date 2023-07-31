@@ -1,5 +1,7 @@
 package com.pokemonreview.api.Jpa.Inheritance.SingleTable;
 
-public interface SingleTable_StudentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SingleTable_StudentRepository extends JpaRepository<SingleTable_Student, String>{
 
 }

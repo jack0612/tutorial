@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 @Entity
 @DiscriminatorValue(value = "Student")
 public class SingleTable_Student extends SingleTable_Person{
-	public SingleTable_Student(String name, String address, String phone, String email) {
-        super(name, address, phone, email);
+	Long studentScholarship;
+	public SingleTable_Student(String name,  String email,Long studentScholarship) {
+        super(name, email);
+        this.studentScholarship=studentScholarship;
     }
 
     public SingleTable_Student() {
@@ -14,7 +16,17 @@ public class SingleTable_Student extends SingleTable_Person{
 
     @Override
     public String toString() {
-        return "Name: " + this.getName() + ", Address: " + this.getAddress() + ", Phone: " + this.getPhone() + ", E-mail: " + this.getEmail();
+        return "Name: " + this.getName()  + ", E-mail: " + this.getEmail();
     }
+
+	public Long getStudentScholarship() {
+		return studentScholarship;
+	}
+
+	public void setStudentScholarship(Long studentScholarship) {
+		this.studentScholarship = studentScholarship;
+	}
+    
+    
     
 }
