@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Start Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="-------Progress-bar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-/-Tablet-641px" transform="translate(-53.000000, -542.000000)" fill="#098A00">
+            <g id="Tablet_Progress-Bar-2" transform="translate(53.000000, 464.000000)">
+                <g id="Group-2" transform="translate(0.000000, 68.000000)">
+                    <path d="M8,26 C12.418278,26 16,22.418278 16,18 C16,13.581722 12.418278,10 8,10 C3.581722,10 0,13.581722 0,18 C0,22.418278 3.581722,26 8,26 Z" id="Start-Copy"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

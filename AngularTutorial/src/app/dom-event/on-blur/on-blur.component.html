@@ -1,0 +1,4 @@
+<input type="text" [(ngModel)]="myModel" (blur)="onBlurMethod()">
+<form [formGroup]="form">
+    <input type="text" formControlName="phone" (blur)="onBlurPhone()" (change)="onChangePhone()">
+</form>

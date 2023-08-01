@@ -1,0 +1,274 @@
+
+ 
+agm-map {
+    height: 600px;
+}
+
+::ng-deep .list-map {
+    width: 100%;
+    height: 100%;
+}
+
+::ng-deep .gm-style-cc {
+    display: none;
+}
+
+::ng-deep .map-outer .gm-control-active {
+    position: relative;
+}
+
+::ng-deep .map-outer .gm-control-active img,
+::ng-deep .map-outer .gm-control-active img {
+    display: none !important;
+}
+
+::ng-deep .map-outer .gm-control-active[aria-label="Zoom in"]:after {
+    width: 15px;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    content: "";
+    transform: translateY(-50%);
+    background: #222222;
+}
+
+::ng-deep .map-outer .gm-control-active[aria-label="Zoom in"]:before {
+    width: 2px;
+    height: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    content: "";
+    transform: translateY(-50%);
+    background: #222222;
+}
+
+::ng-deep .map-outer .gm-control-active[aria-label="Zoom out"]:after {
+    width: 15px;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    content: "";
+    transform: translateY(-50%);
+    background: #222222;
+}
+
+/* chandra */
+::ng-deep .map-outer {
+    height: 100%;
+}
+
+::ng-deep .info-window .si-pointer-border-top {
+    border-top-color: transparent !important;
+}
+
+::ng-deep .info-window .si-pointer-bg-top {
+    border-top-color: transparent !important;
+}
+
+::ng-deep .info-window .si-shadow-inner-pointer-top {
+    box-shadow: none !important;
+}
+
+::ng-deep .info-window .si-shadow-wrapper-top .si-shadow-frame {
+    box-shadow: none !important;
+}
+
+::ng-deep .info-window .si-content-wrapper {
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px !important;
+    background-color: rgb(255, 255, 255) !important;
+    border-radius: 5px !important;
+    overflow: hidden !important;
+    width: 300px !important;
+    padding: 8px !important;
+}
+
+::ng-deep .info-window .si-content {
+    width: 100%;
+    max-width: max-content !important;
+    max-height: max-content !important;
+    overflow: hidden;
+}
+
+::ng-deep .marker-slider {
+    width: 284px;
+    height: 180px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+::ng-deep .marker-slider .marker-slide-image {
+    width: 100%;
+    max-height: 180px;
+    overflow: hidden;
+}
+
+::ng-deep .marker-slider .marker-slide-image a {
+    display: block;
+}
+
+::ng-deep .marker-slider .marker-slide-image a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: unset;
+}
+
+::ng-deep .marker-slider .swiper-pagination {
+    height: auto;
+    text-align: center;
+}
+
+::ng-deep .marker-slider .swiper-pagination span.swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    margin: 0 2px;
+    display: inline-block;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.search-map-holder ::ng-deep .marker-slider .swiper-pagination span.swiper-pagination-bullet-active {
+    background: #00a6ce;
+}
+
+::ng-deep .marker-slider .swiper-button-next,
+::ng-deep .marker-slider .swiper-button-prev {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px,
+        rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+::ng-deep .marker-slider .swiper-button-next:after,
+::ng-deep .marker-slider .swiper-button-prev:after {
+    color: #222222;
+    line-height: 32px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+::ng-deep .marker-slider:hover .swiper-button-next,
+::ng-deep .marker-slider:hover .swiper-button-prev {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-map-holder ::ng-deep .marker-slider .swiper-button-prev.swiper-button-disabled,
+.search-map-holder ::ng-deep .marker-slider .swiper-button-next.swiper-button-disabled {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.search-map-holder ::ng-deep .marker-slider .swiper-button-prev.swiper-button-disabled:after,
+.search-map-holder ::ng-deep .marker-slider .swiper-button-next.swiper-button-disabled:after {
+    color: #7c7c7c;
+}
+
+.markar-cont-bot {
+    padding: 15px 0;
+}
+
+.markar-title {
+    margin-bottom: 6px;
+}
+
+.markar-title a {
+    font-size: 18px;
+    color: #000;
+    font-weight: 600;
+    /* @apply font-nunito; */
+    line-height: 1;
+    margin-bottom: 0px;
+    transition: all 0.3s ease-in-out;
+}
+
+.markar-title a:hover {
+    color: #00a6ce;
+}
+
+.markar-ammenities {
+    margin-bottom: 5px;
+}
+
+.markar-ammenities p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    /*  @apply font-nunito; */
+}
+
+.markar-amenities-img {
+    margin-bottom: 10px;
+    width: 130px;
+    height: auto;
+}
+
+.markar-amenities-img img {
+    width: 100%;
+    height: auto;
+}
+
+.markar-description {
+    margin-bottom: 10px;
+}
+
+.markar-description p {
+    font-size: 14px;
+    color: rgb(46, 46, 46);
+    line-height: 18px;
+    margin-bottom: 0;
+    /* @apply font-nunito; */
+}
+
+.markar-price {
+    text-align: right;
+}
+
+.markar-price p {
+    font-weight: 700;
+    padding-right: 4px;
+    font-size: 22px;
+    color: #222222;
+    line-height: 1;
+    /* @apply font-nunito; */
+}
+
+.markar-price p span {
+    font-weight: 400;
+    max-width: 60px;
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+::ng-deep .map-outer .cluster {
+    position: relative;
+    display: inline-block;
+    line-height: 15px;
+    font-size: 12px;
+    margin-top: 7px;
+    /* @apply font-nunito; */
+}
+
+
+

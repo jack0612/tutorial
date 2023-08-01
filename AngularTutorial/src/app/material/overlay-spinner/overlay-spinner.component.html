@@ -1,0 +1,9 @@
+<ng-template #spinnerRef>
+    <div class="spinner">
+        <div class="spinner-icon">
+            <mat-progress-spinner [color]="color" [mode]="mode" [value]="value" [diameter]="diameter" [strokeWidth]="strokeWidth">
+            </mat-progress-spinner>
+        </div>
+        <div class="spinner-description" [innerHtml]="'EASYFLOW.COMMON.SPINNER.DESCRIPTION' | translate "></div>
+    </div>
+</ng-template>

@@ -1,0 +1,43 @@
+.my-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    padding: 10px;
+    background: green;
+    border: 3px solid #000;
+    color: red;
+    font: 32px Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav li {
+    flex: auto;
+    border: 1px solid red;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    margin: 0 -10px;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+.push-right {
+    margin-left: auto;
+}

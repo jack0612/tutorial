@@ -1,0 +1,779 @@
+<button (click)="scroll()">scroll</button>
+<button (click)="checkTops()">checkTops</button>
+
+<label id="example-radio-group-label">Pick your favorite season</label>
+<mat-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+  <div *ngFor="let panelKey of panelKeys">
+    <ng-container>
+      <mat-radio-button class="example-radio-button" (click)="clickRadio(panelKey,item.key)"
+        *ngFor="let item of  constants[panelKey] | keyvalue" [value]="panelKey+' '+item.key">
+        <span *ngIf="panelKey != item.key">
+          {{item.key}}
+        </span>
+      </mat-radio-button>
+    </ng-container>
+  </div>
+</mat-radio-group>
+<br />
+<!----
+<div>guideContainerBoundingClientRect:{{guideContainerBoundingClientRect|json}}</div>
+<div>businessProfileBoundingClientRect:{{businessProfileBoundingClientRect|json}}</div>
+-->
+
+<div id="snapship-help-guide-section" class="ship-ui-contextual-help-guide"
+  [ngClass]="displayGuideForMobile ? 'ship-ui-contextual-display-guide ' : 'ship-ui-contextual-hide-guide '"
+  aria-live="polite" aria-atomic="false" aria-relevant="all">
+  <!-- Guide: Main panel (includes all panels) -->
+  <mat-expansion-panel [expanded]="panelOpenState" id="context" class="ship-ui-guide-main-panel">
+    <mat-expansion-panel-header class="ship-ui-guide-header" (click)="hideGuide()">
+      <mat-panel-title class="ship-ui-guide-main-header">
+        <img class="ship-ui-icon-size ship-ui-guide-icon" src="assets/images/GuideIcon_White.svg" />
+        <span class="ship-ui-guide-title">{{'SHIPUI.GUIDE.TITLE' | translate}}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div #guideContainer class="ship-ui-guide-contents" tabindex="0">
+      <mat-accordion>
+
+        <!-- Panel group: From -->
+        <mat-expansion-panel class="ship-ui-guide-panel-group">
+          <mat-expansion-panel-header id="007" class="ship-ui-guide-group guide-shipment-from">
+            <mat-panel-title class="ship-ui-guide-group-title">
+              {{'SHIPUI.GUIDE.SECTION_TITLE_FROM' | translate}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main">
+            <mat-accordion>
+              <!-- Panel sub-group: business profile -->
+
+              <mat-expansion-panel  (opened)="opened()" (afterExpand)="scrollIntoView('guide-business-profile')"
+                class="ship-ui-guide-panel-sub-group" *ngIf="isMidMarketUser">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-business-profile">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_BUSINESS_PROFILE' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <!-- Description : Business profile -->
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.BUSINESS_PROFILE_DESC_01' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.BUSINESS_PROFILE_DESC_02' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.BUSINESS_PROFILE_DESC_03' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.BUSINESS_PROFILE_DESC_04' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+              <!-- Panel sub-group: Sender address -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group"   (afterExpand)="scrollIntoView('guide-sender-address')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-sender-address">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_SENDER_ADDRESSES' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content" *ngIf="isUserConsumer">
+                    {{'SHIPUI.GUIDE.SENDER_ADDRESSES_DESC_01_SO' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content" *ngIf="!(isUserConsumer)">
+                    {{'SHIPUI.GUIDE.SENDER_ADDRESSES_DESC_01_SS_SM' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SENDER_ADDRESSES_DESC_02' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SENDER_ADDRESSES_DESC_03' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content" *ngIf="!(isUserConsumer)">
+                    {{'SHIPUI.GUIDE.SENDER_ADDRESSES_DESC_04_SS_SM' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+
+              <!-- Panel sub-group: return address -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="!(isUserConsumer)"   (afterExpand)="scrollIntoView('guide-return-address')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-return-address">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_RETURN_ADDRESS' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.RETURN_ADDRESS_DESC_01' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.RETURN_ADDRESS_DESC_02' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.RETURN_ADDRESS_DESC_03' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.RETURN_ADDRESS_DESC_04' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+              <!-- Panel sub-group: Delivery updates -->
+              <mat-expansion-panel   (afterExpand)="scrollIntoView('guide-delivery-updates')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-delivery-updates">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_DELIVERY_UPDATES' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.DELIVERY_UPDATES_DESC_01' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.DELIVERY_UPDATES_DESC_02' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.DELIVERY_UPDATES_DESC_03' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+
+        <!-- expansion panel : TO -->
+        <mat-expansion-panel class="ship-ui-guide-panel-group">
+          <mat-expansion-panel-header class="ship-ui-guide-group guide-shipment-to">
+            <mat-panel-title class="ship-ui-guide-group-title">
+              {{'SHIPUI.GUIDE.SECTION_TITLE_4' | translate}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main">
+            <mat-accordion>
+              <!-- sub section 'delivery-updates' accordion -->
+              <mat-expansion-panel [ngClass]=" isUserConsumer ? '' : 'ship-ui-guide-panel-sub-group' "   (afterExpand)="scrollIntoView('guide-destination-delivery-updates')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-destination-delivery-updates">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_42' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_421' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'reference-number' accordion -->
+              <mat-expansion-panel *ngIf="!(isUserConsumer)"   (afterExpand)="scrollIntoView('guide-reference-number')"
+                [ngClass]=" isUserConsumer ? '' : 'ship-ui-guide-panel-sub-group' ">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-reference-number">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_43' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_431' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_432' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_433' | translate}}
+                    <a href="{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_URL_435' | translate}}" class="ship-ui-guide-desc-content"
+                      target="_blank">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_434' | translate}}</a>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'cost-centre' accordion -->
+              <mat-expansion-panel *ngIf="!(isUserConsumer)"   (afterExpand)="scrollIntoView('guide-cost-centre')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-cost-centre">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_44' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_441' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_442' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_443' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+
+
+        <!-- expansion panel : PACKAGE -->
+        <mat-expansion-panel class="ship-ui-guide-panel-group">
+          <mat-expansion-panel-header class="ship-ui-guide-group guide-shipment-package">
+            <mat-panel-title class="ship-ui-guide-group-title">
+              {{'SHIPUI.GUIDE.SECTION_TITLE_5' | translate}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main">
+            <mat-accordion>
+              <!-- sub section 'restricted-items' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group"   (afterExpand)="scrollIntoView('guide-package-restricted-items')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-package-restricted-items">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_51' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10">
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_511' | translate}}</span>
+                      <span>
+                        <a href="{{'SHIPUI.GUIDE.SUB_SECTION_POSTAL_GUIDE_URL' | translate}}" target="_blank">
+                          {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_POSTAL_GUIDE' | translate }}
+                        </a>
+                      </span>
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">
+                      {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_514' | translate }}
+                    </div>
+                    <div>
+                      <div> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_515' | translate }} </div>
+                      <ul>
+                        <li> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_516' | translate }} </li>
+                        <li> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_517' | translate }} </li>
+                        <li> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_518' | translate }} </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_519' | translate }} </div>
+                      <ul>
+                        <li> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5110' | translate }} </li>
+                        <li> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5111' | translate }} </li>
+                        <li> {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5112' | translate }} </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <span>{{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5113' | translate }}</span>
+                      <span>
+                        <a href="{{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_NON_MAILABLE_URL' | translate }}" target="_blank">
+                          {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_NON_MAILABLE' | translate }}
+                        </a>
+                      </span>
+                      <span>{{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5115' | translate }}</span>
+                      <span>
+                        <a href="{{'SHIPUI.GUIDE.SUB_SECTION_POSTAL_GUIDE_URL_2' | translate}}" target="_blank">
+                          {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_POSTAL_GUIDE_2' | translate }}
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'saved-package-details' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="!(isUserConsumer)"   (afterExpand)="scrollIntoView('guide-saved-package-details')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-saved-package-details">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_52' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_521' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_522' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_523' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_524' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_525' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'package-types & package-size' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group"   (afterExpand)="scrollIntoView('guide-packaging-types')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-packaging-types">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_53' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_530' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_531' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_532' | translate}}</li>
+                      <li *ngIf="!(isUserConsumer)">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_533' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_534' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_535' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_536' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_537' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_538' | translate}}
+                    </div>
+                    <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_539' | translate}}</div>
+                    <div>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5310' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5311' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5312' | translate}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'handling-surcharges' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group"   (afterExpand)="scrollIntoView('guide-handling-surcharge')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-handling-surcharge">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_55' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_551' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_552' | translate}}
+                    </div>
+                    <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_553' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_554' | translate}}
+                    </div>
+                    <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_555' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_556' | translate}}
+                    </div>
+                    <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_557' | translate}}</div>
+                    <div>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_558' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_559' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5510' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5511' | translate}}</li>
+                    </ul>
+                    <div>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5512' | translate}}</div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'fuel-surcharges' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group"   (afterExpand)="scrollIntoView('guide-fuel-surcharges')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-fuel-surcharges">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_56' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_561' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">
+                    <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_562' | translate}}</span>
+                    <span>
+                      <a href="{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_564' | translate}}" target="_blank">
+                        {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_563' | translate}}
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'item-weight(US/International)' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="!recipientAddressIsDomestic"   (afterExpand)="scrollIntoView('guide-item-weight')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group"
+                  [ngClass]="{'guide-item-weight': !recipientAddressIsDomestic}">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_57' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_571' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_572' | translate}}</span>
+                      <span>
+                        <a href="{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_PERSONAL_URL' | translate}}" target="_blank">
+                          {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_573' | translate}}
+                        </a>
+                      </span>
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_574' | translate}}</span>
+                      <span>
+                        <a href="{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_BUSINESS_URL' | translate}}" target="_blank">
+                          {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_575' | translate}}
+                        </a>
+                      </span>
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_576' | translate}}</span>
+                    </div>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_577' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_578' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_579' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5710' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5711' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5712' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5713' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5714' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5715' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5716' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5717' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5718' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5719' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5720' | translate}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'item-weight(domestic)' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="recipientAddressIsDomestic"   (afterExpand)="scrollIntoView('guide-item-weight')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group"
+                  [ngClass]="{'guide-item-weight': recipientAddressIsDomestic}">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_58' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_581' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_582' | translate}}</span>
+                      <span>
+                        <a href="{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_584' | translate}}" target="_blank">
+                          {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_573' | translate}}
+                        </a>
+                      </span>
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_585' | translate}}</span>
+                      <span>
+                        <a href="{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_587' | translate}}" target="_blank">
+                          {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_586' | translate}}
+                        </a>
+                      </span>
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_588' | translate}}</span>
+                    </div>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_589' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5810' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5811' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5812' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5813' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5814' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5815' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5816' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5817' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5818' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5819' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5820' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5821' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5822' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5823' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5824' | translate}}</li>
+                    </ul>
+                    <div class="ship-ui-guide-title">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5825' | translate}}</div>
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5826' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5827' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_5828' | translate}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- Panel sub-group: prepaid envelope -->
+              <mat-expansion-panel *ngIf="isMidMarketUser"   (afterExpand)="scrollIntoView('guide-prepaid-envelope')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-prepaid-envelope">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_PREPAID_ENVELOPE' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.PREPAID_ENVELOPE_DESC_01' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content-4">{{'SHIPUI.GUIDE.PREPAID_ENVELOPE_DESC_02' | translate}}
+                  </div>
+                  <ul>
+                    <li class="ship-ui-guide-desc-content-4">{{'SHIPUI.GUIDE.PREPAID_ENVELOPE_DESC_02_01' | translate}}
+                    </li>
+                    <li class="ship-ui-guide-desc-content-4">{{'SHIPUI.GUIDE.PREPAID_ENVELOPE_DESC_02_02' | translate}}
+                    </li>
+                    <li class="ship-ui-guide-desc-content-4">{{'SHIPUI.GUIDE.PREPAID_ENVELOPE_DESC_02_03' | translate}}
+                    </li>
+                  </ul>
+                  <div class="ship-ui-guide-desc-content">
+                    <a href="{{'SHIPUI.GUIDE.PREPAID_ENVELOPE_DESC_03_LINK' | translate}}" target="_blank">
+                      {{ 'SHIPUI.GUIDE.PREPAID_ENVELOPE_DESC_03_TEXT' | translate }}
+                    </a>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+
+        <!-- expansion panel for services -->
+        <mat-expansion-panel class="ship-ui-guide-panel-group">
+          <mat-expansion-panel-header class="ship-ui-guide-group guide-shipment-services">
+            <mat-panel-title class="ship-ui-guide-group-title">
+              {{'SHIPUI.GUIDE.SECTION_TITLE_SERVICE_PANEL' | translate}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <!-- sub section accordion -->
+          <div class="main">
+            <mat-accordion>
+              <!-- About additional options -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" (afterExpand)="scrollIntoView('guide-services-add-option')">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-services-add-option">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_ADD_OPTION' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6101' | translate}}
+                  </div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6102' | translate}}
+                  </div>
+                </div>
+              </mat-expansion-panel>
+
+
+              <!-- Signature and proof of age -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-services-sign-proof">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    <span>{{'SHIPUI.GUIDE.SUB_SECTION_TITLE_SIGNATURE' | translate}}</span>
+                    <span *ngIf="!(isUserConsumer)"
+                      class="ship-ui-padding-left-4">{{'SHIPUI.GUIDE.SUB_SECTION_TITLE_AND' | translate}}</span>
+                    <span *ngIf="!(isUserConsumer)"
+                      class="ship-ui-padding-left-4">{{'SHIPUI.GUIDE.SUB_SECTION_TITLE_AGE_PROOF' | translate}}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_SIGNATURE' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6201' | translate}}
+                  </div>
+                  <div class="ship-ui-guide-title ship-ui-padding-bottom-10" *ngIf="!(isUserConsumer)">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_AGE_PROOF' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content" *ngIf="!(isUserConsumer)">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6202' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+
+              <!-- Drop-off option -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="!(isUserConsumer)">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-drop-off">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_DROP_OFF' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_HEADER_1' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6301' | translate}}
+                  </div>
+                  <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_HEADER_2' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6302' | translate}}
+                  </div>
+                  <div class="ship-ui-guide-desc-content">
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6303' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6304' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6305' | translate}}</li>
+                    </ul>
+                  </div>
+                  <div class="ship-ui-guide-title ship-ui-padding-bottom-10">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_HEADER_3' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6306' | translate}}
+                  </div>
+                  <div class="ship-ui-guide-desc-content">
+                    <ul>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6307' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6308' | translate}}</li>
+                      <li>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6309' | translate}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+
+              <!-- Libility coverage -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-liability-coverage">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_LCOV' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <!-- snapship/Shipping Manager -->
+                  <div class="ship-ui-guide-desc-content" *ngIf="!(isUserConsumer)">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6401' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content" *ngIf="!(isUserConsumer)">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6402' | translate}}</div>
+                  <div class="ship-ui-guide-desc-content" *ngIf="!(isUserConsumer)">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6403' | translate}}</div>
+                  <!-- ship online -->
+                  <div *ngIf="isUserConsumer">
+                    <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6502' | translate}}
+                    </div>
+                    <div class="ship-ui-guide-desc-content"
+                      [innerHTML]="'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_65021' | translate"></div>
+                    <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_65022' | translate}}
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+
+              <!-- Collect on delivery -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="!(isUserConsumer)">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-collect-delivery">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_COD' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6601' | translate}}
+                  </div>
+                </div>
+              </mat-expansion-panel>
+
+              <!-- Guaranteed delivery dates -->
+              <mat-expansion-panel>
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-guaranted-delivery">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_GDD' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6701' | translate}}
+                  </div>
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_6702' | translate}}
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+
+
+        <!-- expansion panel : Customs -->
+        <mat-expansion-panel class="ship-ui-guide-panel-group" *ngIf="!recipientAddressIsDomestic">
+          <mat-expansion-panel-header class="ship-ui-guide-group guide-shipment-customs">
+            <mat-panel-title class="ship-ui-guide-group-title">
+              {{'SHIPUI.GUIDE.SECTION_TITLE_7' | translate}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main">
+            <mat-accordion>
+              <!-- sub section 'adding shipping to specific countries' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-shipping-to-specific-countries">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_71' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_711' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_712' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_713' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">
+                      <span>{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_714' | translate}}</span>
+                      <span>
+                        <a href="{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_716' | translate}}" target="_blank">
+                          {{ 'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_715' | translate }}
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'Non-delivery instructions' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-non-delivery-instructions">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_72' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_721' | translate}}</div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'Additional declaration information' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="!(isUserConsumer)">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-additional-declaration">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_73' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_731' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_732' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_733' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_734' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_735' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_736' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_737' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_738' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_739' | translate}}
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'Required item information' accordion -->
+              <mat-expansion-panel [ngClass]=" isUserConsumer ? '' : 'ship-ui-guide-panel-sub-group'">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-required-item-information">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_74' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_741' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_742' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_743' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_744' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_745' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_746' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_747' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_748' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_749' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_750' | translate}}
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'Additional item information' accordion -->
+              <mat-expansion-panel class="ship-ui-guide-panel-sub-group" *ngIf="!(isUserConsumer)">
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-additional-item-information">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_75' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_751' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_752' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_753' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_754' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10 ship-ui-guide-title">
+                      {{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_755' | translate}}</div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_756' | translate}}
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <!-- sub section 'Saved customs details' accordion -->
+              <mat-expansion-panel>
+                <mat-expansion-panel-header class="ship-ui-guide-sub-group guide-saved-customs-details"
+                  *ngIf="!(isUserConsumer)">
+                  <mat-panel-title class="ship-ui-guide-sub-group-title">
+                    {{'SHIPUI.GUIDE.SUB_SECTION_TITLE_76' | translate}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="ship-ui-guide-desc-section" tabindex="0">
+                  <div class="ship-ui-guide-desc-content">
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_761' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_762' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_763' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_764' | translate}}
+                    </div>
+                    <div class="ship-ui-padding-bottom-10">{{'SHIPUI.GUIDE.SUB_SECTION_ITEM_DESC_765' | translate}}
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </mat-expansion-panel>
+</div>

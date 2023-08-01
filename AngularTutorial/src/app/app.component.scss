@@ -1,0 +1,52 @@
+div {
+    width: 150px;
+    height: 150px;
+    background: #BADA55;
+    position: sticky;
+    left: 200px;
+    top: 30px;
+}
+
+span {
+    left: 30px;
+}
+
+body {
+    height: 1000px
+}
+
+a:nth-child(1) {
+    background: red;
+}
+
+//https://blog.angular-university.io/angular-host-context/
+:host {
+    border: 2px solid dimgray;
+    display: block;
+    padding: 20px;
+}
+
+//You could be surprised to find out that this style only applies 
+//to the h2 elements inside the app-root template, but not to the h2 inside the blue-button component.
+:host h2 {
+    color: red;
+}
+
+//If we want our component styles to cascade to all child elements of a component, but not to any other 
+//element on the page, we can currently do so using by combining the :host with the ::ng-deep selector:
+:host ::ng-deep h2 {
+    color: red;
+}
+
+//Sometimes, we also want to have a component apply a style to some element outside of it. 
+//This does not happen often, but one possible common use case is for theme enabling classes.
+//For example, let's say that we would like to ship a component with multiple alternative themes. 
+//Each theme can be enabled via adding a CSS class to a parent element of the component.
+:host-context(.red-theme) .btn-theme {
+    background: red;
+}
+
+:host-context(.blue-theme) .btn-theme {
+    background: blue;
+}
+

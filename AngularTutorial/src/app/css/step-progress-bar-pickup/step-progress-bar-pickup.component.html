@@ -1,0 +1,25 @@
+ 
+<nav class="progressBarContainer">
+    <ul class="progressBarList">
+      <li *ngFor="let item of progressBarItems; let i = index; let first = first; let last = last">
+        <div class="navigation-item" [class.first-item]="first" [class.last-item]="last">
+          <div [ngClass]="'navigation-item--left-desc ' + item.uiState.state">
+            <div class="navigation-item--title-logo" [ngStyle]="{ 'background-image': 'url(' + item.uiState.icon + ')'}"></div>
+            <div class="navigation-item--step">
+              <span>Step {{ item.stepNumber }} of {{progressBarItems.length}}</span>
+              <span class="step-name">item.stateText  </span>
+            </div>
+          </div>
+          <div [ngClass]=" 'navigation-item--container ' + item.uiState.state ">
+            <div class="navigation-item--title">
+              <div class="navigation-item--title-logo" [ngStyle]="{ 'background-image': 'url(' + item.uiState.icon + ')'}"></div>
+              {{ item.stateText  }}
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  
+  

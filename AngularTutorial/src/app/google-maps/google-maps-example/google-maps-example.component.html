@@ -1,0 +1,31 @@
+<google-map
+  height="500px"
+  width="100%"
+  [zoom]="zoom"
+  [center]="center"
+  [options]="options"
+  (mapClick)="click($event)"
+>
+
+<!-- <map-polyline [path]="vertices"></map-polyline> -->
+<!-- <map-circle [center]="circleCenter" [radius]="radius"></map-circle>
+<map-ground-overlay [url]="imageUrl" [bounds]="imageBounds"></map-ground-overlay>
+<map-polygon [paths]="vertices"></map-polygon>
+<map-kml-layer [url]="kmlUrl"></map-kml-layer> -->
+  <map-marker
+    #markerElem
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    [options]="marker.options"
+    (mapClick)="openInfo(markerElem, marker.info)"
+  >
+  </map-marker>
+  <map-info-window>{{ infoContent }}</map-info-window>
+</google-map>
+<button (click)="zoomIn()">Zoom in</button>
+<button (click)="zoomOut()">Zoom out</button>
+<button (click)="logCenter()">Log center</button>
+<button (click)="addMarker()">Add marker</button>
+{{markerCustomizedIcon}}

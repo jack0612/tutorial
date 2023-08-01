@@ -1,0 +1,11 @@
+<input #newFood type="text" placeholder="Enter a new food">
+<button (click)="addFood(newFood.value)">Add food</button>
+
+<app-cdf-child [data]="foods"  [fruits]="fruits" ></app-cdf-child>
+<br/>
+
+<input #newFruit type="text" placeholder="Enter a new fruit">
+<br/>
+<button (click)="addFruit(newFruit.value)">Add Fruit</button>
+
+ 

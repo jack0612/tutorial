@@ -1,0 +1,8 @@
+<p>test-structural-directive works!</p>
+
+<div *appNgForObject="let propertyName from myObject; let index=index">
+    [{{index}}] {{propertyName}}: {{myObject[propertyName]}}
+  </div>
+
+  <button (click)="buttonClick()">toggle</button>
+  <div *isAuthorized="authorized;secondParam:{control:'email',email:'input is mandatory'}">Remove Item</div>

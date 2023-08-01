@@ -1,0 +1,17 @@
+<form [formGroup]="form.asFormGroup">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" />
+    </div>
+
+    <div>
+      <label for="age">Age</label>
+      <input id="age" type="text" formControlName="age" />
+    </div>
+
+    <button class="button">Validate</button>
+  </form>
+
+  <div>Initial value: {{ form.initialValue | json }}</div>
+  <div>Age is greater than 10: {{ ageIsGreaterThanTen | async }}</div>
+  <div>Content is valid: {{ formIsValid | async }}</div>

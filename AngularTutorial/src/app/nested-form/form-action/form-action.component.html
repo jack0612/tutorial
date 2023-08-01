@@ -1,0 +1,25 @@
+<form [formGroup]="form.asFormGroup" class="form-horizontal">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input id="age" type="text" formControlName="age" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input id="country" type="text" formControlName="country" class="form-control"/>
+    </div>
+
+    <button class="btn btn-primary" [clickEvent]="formActions.validateButtonClicked">Validate</button>
+    <button class="btn btn-secondary" [clickEvent]="formActions.resetButtonClicked">reset</button>
+  </form>
+
+  <hr>
+  
+  <div>Initial value: {{ form.initialValue | json }}</div>
+  <div>Age is greater than 10: {{ ageIsGreaterThanTen | async }}</div>
+  <div>Content is valid: {{ formIsValid | async }}</div> 

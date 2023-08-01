@@ -1,0 +1,19 @@
+<!--If you're using cdkFocusInitial together with the CdkTrapFocus directive, 
+    nothing will happen unless you've enabled the cdkTrapFocusAutoCapture option as well. -->
+
+<div cdkTrapFocus [cdkTrapFocusAutoCapture]="true" class="example-focus-monitor">
+
+	<mat-form-field appearance="fill">
+		<mat-label>Username</mat-label>
+		<input cdkFocusInitial  aria-label="Username" class="username"
+             matInput
+            placeholder="Enter Username" type="text">
+  </mat-form-field>
+
+		<br/>
+		<mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input   aria-label=" Password" class="password"  matInput placeholder="Enter Password"
+			type="text">
+		</mat-form-field>
+</div>

@@ -1,0 +1,56 @@
+<section class="sectionDD">
+  
+  <mat-form-field>
+    <label id="dropdown-label">Select Animal Default</label>
+    <mat-select
+      title="{{ selected }}"
+      aria-haspopup="listbox"
+      aria-labelledby="dropdown-label"
+      #mySelect
+      disableOptionCentering
+      (click)="forcePosition($event)"
+      [(value)]="selected"
+    >
+      <mat-option *ngFor="let animal of animals" [value]="animal.name">
+        {{ animal.name }}-{{animal.sound}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br /><br />
+
+  <mat-form-field>
+    <label id="dropdown-label2">Select Animal Error</label>
+    <mat-select
+      aria-haspopup="listbox"
+      aria-labelledby="dropdown-label2"
+      [formControl]="animalControl"
+      required
+      disableOptionCentering
+      (click)="forcePosition($event)"
+      title="{{ selected2 }}"
+    >
+      <!-- <mat-option>--</mat-option> -->
+      <mat-option *ngFor="let animal of animals" [value]="animal.name+animal.sound">
+        {{ animal.name }}-{{animal.sound}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+  </mat-form-field>
+  <br /><br />
+
+  <mat-form-field>
+    <label id="dropdown-label3">Select Animal Disabled</label>
+    <mat-select
+      aria-haspopup="listbox"
+      aria-labelledby="dropdown-label3"
+      [disabled]="true"
+      [(value)]="selected"
+      title="{{ selected }}"
+    >
+      <mat-option value="Cat">Cat</mat-option>
+      <mat-option value="Dog">Dog</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</section>

@@ -1,0 +1,132 @@
+/* guide */
+.ship-ui-contextual-help-guide {
+    font-family: Roboto;
+    color: #333333;
+    position: fixed;
+    right: 4.644rem;
+    bottom: 0px;
+    width: 25.25rem;
+    z-index: 5;
+    box-shadow: 0 3px 8px 0 rgba(17, 17, 17, 0.13);
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+  }
+  
+  .ship-ui-guide-main-header {
+    justify-content: center;
+    color: #fff;
+  }
+  
+  .ship-ui-guide-header {
+    background: #004990 !important;
+    border-radius: 15px 15px 0 0;
+  }
+  
+  .ship-ui-guide-group {
+    background: #f0f0f0 !important;
+  }
+  
+  .ship-ui-guide-sub-group {
+    background: #fff !important;
+  }
+  
+  .ship-ui-contextual-help-guide .mat-expansion-panel-body {
+    padding: 0;
+  }
+  
+  .ship-ui-guide-panel-group {
+    margin-bottom: 6px;
+  }
+  
+  .ship-ui-guide-panel-sub-group {
+    margin-bottom: 3px;
+    border-bottom: solid 2px #f0f0f0;
+  }
+  
+  .ship-ui-guide-icon {
+    margin-top: 3px;
+    margin-right: 6px;
+  }
+  
+  .ship-ui-guide-group-title {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.4rem;
+    letter-spacing: 0.4px;
+  }
+  
+  .ship-ui-guide-sub-group-title {
+    font-size: 1.125rem;
+    line-height: 1.33rem;
+    letter-spacing: 0.4px;
+  }
+  
+  .ship-ui-guide-desc-content {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 1.5rem;
+  }
+  
+  .ship-ui-guide-title {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .ship-ui-guide-last-group {
+    padding-bottom: 9.375rem;
+  }
+  
+  .ship-ui-guide-desc-section {
+    padding-left: 2.375rem;
+    padding-right: 2.25rem;
+  }
+  
+  .ship-ui-guide-main-panel {
+    border-radius: 0;
+  }
+  
+  .ship-ui-guide-contents {
+    overflow-y: scroll;
+    max-height: 70vh;
+  }
+  
+  .ship-ui-guide-header.mat-expansion-panel-header:hover, .ship-ui-guide-header.mat-expansion-panel-header:focus {
+    background: #004990!important;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .ship-ui-contextual-hide-guide {
+       display: none;
+    }
+  
+    .ship-ui-contextual-display-guide {
+       display: block;
+    }
+  
+    .ship-ui-contextual-help-guide {
+       max-width: 20rem;
+       right: 1rem !important;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .ship-ui-contextual-hide-guide {
+       display: none;
+    }
+  
+    .ship-ui-contextual-display-guide {
+       display: block;
+    }
+  
+    .ship-ui-contextual-help-guide {
+       width: 22rem;
+       right: 2rem !important;
+    }
+  }
+  
+  
+  

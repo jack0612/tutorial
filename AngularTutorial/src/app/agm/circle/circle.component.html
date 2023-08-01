@@ -1,0 +1,16 @@
+{{title}}
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng" >
+  </agm-marker>
+
+  <agm-circle [latitude]="lat" [longitude]="lng"
+      [radius]="5000"
+      [fillColor]="'red'">
+  </agm-circle>
+
+  <agm-circle [latitude]="lat2" [longitude]="lng2"
+      [radius]="7000"
+      [fillColor]="'green'">
+  </agm-circle>
+
+</agm-map>

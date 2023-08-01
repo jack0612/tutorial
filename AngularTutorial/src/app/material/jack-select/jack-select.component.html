@@ -1,0 +1,80 @@
+<!--Getting and setting with value-->
+<div class="jack-select">
+    <mat-form-field>
+        <mat-label>Getting and setting with value</mat-label>
+        <mat-select [(value)]="selectedGame">
+            <mat-option value="Hockey">Hockey</mat-option>
+            <mat-option value="Football">Football</mat-option>
+            <mat-option value="Cricket">Cricket</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div>{{selectedGame}}</div>
+    <br />
+    <br />
+    <!--Getting and setting with NgModel-->
+    <mat-form-field>
+        <mat-label>Getting and setting with NgModel</mat-label>
+        <mat-select [(ngModel)]="selectedGame2">
+            <mat-option value="Hockey">Hockey</mat-option>
+            <mat-option value="Football">Football</mat-option>
+            <mat-option value="Cricket">Cricket</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div>{{selectedGame2}}</div>
+    <!--Use ngModel with native <select> to set and get value as following.-->
+    <br />
+    <br />
+    <mat-form-field>
+        <mat-label>Use ngModel with native select to set and get value as following</mat-label>
+        <select matNativeControl [(ngModel)]="selectedGame3">
+            <option value="Hockey">Hockey</option>
+            <option value="Football">Football</option>
+            <option value="Cricket">Cricket</option>
+        </select>
+    </mat-form-field>
+    <div>{{selectedGame3}}</div>
+    <!--Populate Select Option Dynamically-->
+    <br />
+    <br />
+    <mat-form-field>
+        <mat-label>Populate Select Option Dynamically</mat-label>
+        <mat-select [(value)]="selectedProfile">
+            <mat-option *ngFor="let p of profiles" [value]="p">
+                {{ p.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div *ngIf="selectedProfile">{{selectedProfile.id}} - {{selectedProfile.name}}</div>
+    <!--using Reactive Form-->
+    <br />
+    <br />
+    <form [formGroup]="empForm">
+        <mat-form-field>
+            <mat-label>using Reactive Form</mat-label>
+            <mat-select formControlName="profile">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let prf of allProfiles" [value]="prf.id">
+                    {{ prf.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <br />
+    <br />
+    {{empForm.controls.profile.value|json}}
+    <br/>
+    {{empForm.value|json}}
+    <br />
+    <br />
+    <!--without any-->
+    <mat-form-field>
+        <mat-label>without any</mat-label>
+        <mat-select>
+            <mat-option value="Hockey">Hockey</mat-option>
+            <mat-option value="Football">Football</mat-option>
+            <mat-option value="Cricket">Cricket</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br />
+    <br />
+</div>

@@ -1,0 +1,265 @@
+
+@import '../../../../assets/styles/mixins.scss';
+
+
+.pickup-container {
+  font-family: "Roboto";
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  letter-spacing: 0.5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  .back-button-section {
+    padding: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-title{
+    font-size: 1.75rem;
+    font-weight: 300;
+    line-height: 1.33;
+    letter-spacing: 0.3px;
+    color: #111111;
+  }
+
+  .book-pickup-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: #333333;
+  }
+
+  .book-pickup-desc-cost {
+      margin-top: 1.5rem;
+  }
+
+  .book-pickup-desc-time {
+    margin-top: 1.5rem;
+  }
+
+  .calendar-sub-section {
+    width: 25rem;
+    margin-top: 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 0 0.625rem 0 rgba(203, 203, 203, 0.5);
+    border: solid 1px #cbcbcb;
+    background-color: #ffffff;
+    @include breakpoint(mobile){
+        width: 100%;
+    }
+  }
+
+  .date-input-label{
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: #333333;
+  }
+
+  .date-input {
+    width: 13.2rem;
+    height: 2.75rem;
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+    padding: 0.625rem 0.625rem 0.625rem 1rem;
+    border-radius: 2px;
+    border: solid 1px #cbcbcb;
+    display: flex;
+  }
+
+  .date-input-field {
+    border: none;
+    outline: none;
+    width: 7.5rem;
+    height: 1.5rem;
+    margin: 0 2.625rem 0 0;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #333333;
+    padding : 0;
+  }
+
+  .note-sub-section {
+    display: flex;
+  }
+
+  .note-attention-box {
+    width: 1rem;
+    height: 1rem;
+    margin: 3px 0.625rem 0 1rem;
+    border-radius: 1px;
+    border: solid 1px #cbcbcb;
+    background-color: #b3c998;
+  }
+
+  .note {
+    margin: 0 0 0 0.625rem;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: normal;
+    color: #333333;
+  }
+
+  .select-pickup-date-section {
+      margin-top: 4rem;
+  }
+
+  .clickable {
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 2.5rem 0 rgba(203, 203, 203, 1);
+    }
+  }
+
+  .select-pickup-time-section {
+    margin-top: 4rem;
+    &:last-child {
+      margin-right: unset;
+    }
+  }
+
+  .select-pickup-time-desc{
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #333333;
+    margin-top: 1.5rem;
+  }
+
+  .selected-pickup-time-slots {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #111111;
+    margin-top: 1.5rem;
+    @include breakpoint(tablet_and_mobile){
+       flex-direction: column;
+    }
+  }
+
+  .active-pickup-time-slot {
+    width: 12.8rem;
+    height: 2px;
+    background-color: #098a00;
+  }
+
+  .selected-pickup-time-slot {
+    width: 12.8rem;
+    margin-top: 2px;
+    margin-right: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 2px 0.5rem 0 #dddcdd;
+    background-color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+
+  .selected-slot-date {
+    font-weight: bold;
+  }
+
+  .selected-slot-content {
+    font-size: 1rem;
+  }
+
+  .selected-slot-address {
+    margin-top: 0.8rem;
+  }
+
+  .pickup-time-options {
+      margin-top: 1.375rem;
+      display:flex;
+      @include breakpoint(mobile){
+         flex-direction: column;
+      }
+  }
+
+  .pickup-time-option {
+    margin-right: 1.1rem;
+  }
+
+  .pickup-time-option-delete-icon-container {
+    text-decoration-line: none;
+    margin-right: 0.625rem;
+    margin-top: 2rem;
+  }
+
+  .pickup-time-option-delete-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .add-another-slot-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #0467c6;
+  }
+
+  .instruction-section {
+    margin-top: 4rem;
+  }
+
+  .instruction-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .instruction-field {
+    width: 29.25rem;
+    height: 2.75rem;
+    @include breakpoint(mobile){
+      width: 18rem;
+    }
+  }
+
+  .additional-instruction-label{
+    display:flex;
+  }
+
+  .additional-instruction-optional-label{
+    padding-left: 0.75rem;
+    font-weight: 300;
+  }
+
+  .consent {
+    margin-top: 1.5rem;
+  }
+
+  .ship-ui-primary{
+    padding: 0.75rem 1.25rem;
+  }
+  .button-row {
+    margin-top: 4rem;
+    @include breakpoint(mobile){
+        flex-direction: column;
+    }
+  }
+
+  .button {
+    margin-right: 0.9rem;
+    margin-bottom: unset;
+    padding: 0.75rem 1.25rem;
+    &:last-child {
+      margin-right: unset;
+    }
+    @include breakpoint(mobile){
+       width: 18rem;
+       margin-bottom: 1rem;
+    }
+  }
+
+  .mat-select-disabled {
+    background-color:rgb(221,221,221);
+  }
+
+}
+

@@ -1,0 +1,9 @@
+<button (click)="addItem()">addItem</button>
+<div class="frame" (scroll)="scrolled($event)" #scrollframe>
+    <div *ngFor="let item of items; let i=index" class="item" #item>
+      Item{{i}}
+    </div>
+  </div>
+
+<!--https://gist.github.com/emanuer/8897917e8d5b043dd9285455161ebadc-->
+  <div (scroll)="onScroll($event)">scroll me</div>

@@ -1,0 +1,117 @@
+<h1>{{ title }}</h1>
+<!---
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"   
+  (centerChange)="centerChange($event)"
+  (mapReady)="mapReady($event)"
+  class="map-outer"
+  >
+ 
+  <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="onClickMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label"
+      [markerDraggable]="m.draggable">
+     
+    <agm-info-window>
+      <strong>Label: {{m.label}}</strong><br/>
+      <strong>Latitude: {{m.lat}}</strong><br/>
+      <strong>Longitude: {{m.lng}}</strong>
+    </agm-info-window>
+   
+  </agm-marker>
+ 
+</agm-map>
+-->
+<div class="form-group">
+    <input
+      placeholder="search for location"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="off"
+      type="text"
+      class="form-control"
+      #search
+      [formControl]="searchControl"
+    />
+  </div>
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="map_zoom"
+    [disableDefaultUI]="true"
+    [zoomControl]="true"
+    (mapClick)="onMapClick($event)"
+    (centerChange)="onCenterChange($event)"
+    (mapReady)="onMapReady($event)"
+    class="map-outer"
+  >
+ 
+  <!-- imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m" -->
+  <agm-marker-cluster
+      class="map-cluster"
+      [maxZoom]="clulster_max_zoom"
+      [minimumClusterSize]="minClusterSize"
+      [styles]="mapOptions.styles"
+      [calculator]="mapOptions.calculator"
+    >
+      <agm-marker
+        *ngFor="let m of markers | async; let i = index"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [label]="{
+          color: 'red',
+          fontWeight: 'bold',
+          fontSize: '14px',
+          fontFamily: 'nunito',
+          lineHeight: '10px',
+          text: m.label
+          }"
+        [iconUrl]="{
+                      url: './assets/images/map-marker.png'
+                  }"
+        placement="top"
+        (mouseOver)="onMouseOverMarker(marker, i, $event)"
+
+        (mouseOut)="onMouseOutMarker(marker, i, $event)"
+        (markerClick)="onClickMarker(m.label, i)"
+        [markerDraggable]="false"
+        (dragEnd)="onMarkerDragEnd(m, $event)"
+        [mdbTooltip]="'Marker label:'+m.label"
+        triggers="mouseenter:click"
+      >
+        <agm-snazzy-info-window
+          [isOpen]="isInfoWindowOpen(i)"
+          [latitude]="m.lat"
+          [longitude]="m.lng"
+          [closeWhenOthersOpen]="true"
+          [closeOnMapClick]="true"
+          [showCloseButton]="false"
+          [openOnMarkerClick]="true"
+          [wrapperClass]="'info-window'"
+          #infoWindow
+        >
+          <ng-template>{{m.event_info}}</ng-template>
+        </agm-snazzy-info-window>
+      </agm-marker>
+    </agm-marker-cluster>
+
+    <agm-circle [latitude]="circleCenter.lat" [longitude]="circleCenter.lng"
+      [radius]="10000"
+      [fillColor]="'blue'"
+      [circleDraggable]="true"
+      [editable]="true">
+    </agm-circle>
+    <agm-direction 
+      [origin]="origin" 
+      [destination]="destination"
+      [waypoints]="waypoints"
+    ></agm-direction>
+  </agm-map>
+  circleCenter:{{circleCenter.lat + 3}}
+  

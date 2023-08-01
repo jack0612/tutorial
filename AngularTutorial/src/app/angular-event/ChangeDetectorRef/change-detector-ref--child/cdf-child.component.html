@@ -1,0 +1,15 @@
+<ul>
+    <li *ngFor="let item of data">{{ item }}</li>
+</ul>
+
+<button (click)="refresh()">refresh</button>
+<br/>
+<p *ngIf="isConsumer">----is Consumer---</p>
+<p *ngIf="!isConsumer">----is NOT  Consumer---</p>
+<br/>
+<ul>
+    <li *ngFor="let item of fruitList">{{ item }}</li>
+</ul>
+
+<p>{{ check() }}</p>
+

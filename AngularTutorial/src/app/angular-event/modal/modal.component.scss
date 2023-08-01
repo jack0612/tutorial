@@ -1,0 +1,32 @@
+.ship-ui-modal {
+  z-index: 1000;
+  position: fixed;
+  top: calc(50% - 7.875rem);
+  left: calc(50% - 17.75rem);
+}
+
+.ship-ui-modal-body {
+  background: #fff;
+  padding: 2.5rem;
+  width: 35.5rem;
+}
+
+.ship-ui-modal-background {
+  z-index: 900;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color:#151515;
+  opacity: 0.75;
+}
+
+.ship-ui-h3-modal-width{
+  width: 26.8125rem;
+}
+
+.close-img {
+  display: flex;
+  justify-content: flex-end;
+}

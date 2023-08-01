@@ -1,0 +1,45 @@
+
+<mat-tab-group>
+
+    <mat-tab label="position">
+        <app-position></app-position>
+    </mat-tab>
+
+    <mat-tab label="width-auto">
+        <app-width-auto></app-width-auto>
+    </mat-tab>
+
+    <mat-tab label="grid">
+        <app-grid></app-grid>
+    </mat-tab>
+
+    <mat-tab label="stepProgressBar">
+        <app-step-progress-bar></app-step-progress-bar>
+    </mat-tab>
+
+ 
+
+    <mat-tab label="stepProgressBar-pickup">
+        <app-step-progress-bar-pickup [progressBarItems]="getProgressBarItems()"></app-step-progress-bar-pickup>
+        <button (click)="next()">Next</button>
+    </mat-tab>
+
+    <mat-tab label="stepProgressBar2">
+        <app-step-progress-bar2></app-step-progress-bar2>
+    </mat-tab>
+
+    <mat-tab label="numberCircled">
+        <app-number-circled></app-number-circled>
+    </mat-tab>
+
+    
+
+    
+    
+</mat-tab-group>
+<p>css.componrnt.html</p>
+<main class="main-container">
+    <header class="main-header">HEADER</header>
+    <div class="main-content">MAIN CONTENT</div>
+    <footer class="main-footer">FOOTER</footer>
+  </main>

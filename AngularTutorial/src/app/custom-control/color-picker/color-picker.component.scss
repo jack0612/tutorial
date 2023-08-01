@@ -1,0 +1,22 @@
+:host.ng-touched .picker-icon {
+    position: relative;
+  }
+  :host.ng-touched .picker-icon:after {
+    position: absolute;
+    transform: translate(100%, -50%);
+    top: 50%;
+  } 
+  
+  :host.ng-touched.ng-invalid .picker-icon {
+    box-shadow: 0 0 1px 1px darkred;
+  }
+  :host.ng-touched.ng-invalid .picker-icon:after {
+    content: '❌';
+  }   
+  
+  :host.ng-touched.ng-valid .picker-icon {
+    box-shadow: 0 0 1px 1px green;
+  }
+  :host.ng-touched.ng-valid .picker-icon:after {
+    content: '✅';
+  }

@@ -1,0 +1,16 @@
+<p>cdk-portal works!</p>
+<ng-template #testTemplate let-name>
+    <div>User {{ name }} </div>        
+  </ng-template>
+
+
+  <ng-template #testTemplate2 let-name>
+    <div>User {{ name }} </div>        
+  </ng-template>
+
+  <div class="title">
+    <ng-template cdkPortalHost #portalHost></ng-template>
+</div>
+<ng-template cdkPortal #content let-title>
+  <h1>title:{{ title }}</h1>
+</ng-template>

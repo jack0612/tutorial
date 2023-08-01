@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Flex</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxVyN24mx-gTQWRpDQ7JHzI5tZmpAnuuQ"></script>
+  <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+  <style>
+    body {
+      color: #fff;
+      font-family: arial;
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    .main-container {
+      max-width: 600px;
+      margin: 0 auto;
+      border: solid 10px green;
+      padding: 10px;
+      margin-top: 40px;
+    }
+
+    .main-container * {
+      padding: 10px;
+      background: #aaa;
+      border: dashed 5px #000;
+    }
+
+    .main-container *+* {
+      margin-top: 20px;
+    }
+
+    .main-header {
+      height: 1000px;
+      background: #aaa;
+      border-color: red;
+    }
+
+    .main-content {
+      min-height: 1000px;
+    }
+
+    .main-header {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+    }
+  </style>
+  <script>
+    // Log the value of FCP to the console | https://web.dev/fcp/#measure-fcp-in-javascript 
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntriesByName('first-contentful-paint')) {
+        console.log('FCP: ', entry.startTime);
+        observer.disconnect();
+      }
+    })
+
+    observer.observe({ type: 'paint', buffered: true });
+  </script>
+
+</head>
+
+<body>
+  <app-root></app-root>
+  
+</body>
+
+</html>
+<!--
+
+  C:\eclipseProjects\angular\jackCodeExample\flex\node_modules\quill\dist
+-->

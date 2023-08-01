@@ -1,0 +1,25 @@
+<p>ng-template works!</p>
+<ng-template [ngIf]="true">go home</ng-template>
+
+<ng-template *ngIf="true then goHome"></ng-template>
+<ng-template #goHome>go home aaaa</ng-template>
+
+<h2>Defining a Template using ng-Template</h2>
+<ng-template>
+  <p> aaaaaaaaaaaa</p>
+</ng-template>
+
+<!--they are same-->
+<span>I am first span</span>
+<ng-container #vc></ng-container>
+<span>I am last span</span>
+<ng-template #tpl>
+  <span>I am span in template</span>
+</ng-template>
+
+<span>I am first span</span>
+<ng-container [ngTemplateOutlet]="tpl"></ng-container>
+<span>I am last span</span>
+<ng-template #tpl>
+  <span>I am span in template</span>
+</ng-template>

@@ -1,0 +1,36 @@
+ 
+ 
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="example-form">
+          
+                 First Name: 
+                <input   formControlName="firstName" />
+         
+            <br />
+          
+                  Last Name: 
+                <input   formControlName="lastName" />
+            
+            <br />
+
+            
+                 Age: 
+                <input   formControlName="age" type="number" />
+                 
+            
+            <br />
+
+           
+                 Request room access 
+                 <input   formControlName="room" type="text" />
+            
+            <br />
+            <div *ngIf="profileForm.errors?.roomOnlyWith18">
+                You can not access this room being under 18
+            </div>
+
+            <button   color="primary" type="submit" [disabled]="!profileForm.valid">
+                Submit
+            </button>
+          
+        </form>
+ 

@@ -1,0 +1,905 @@
+body {
+    font-family: Roboto !important;
+    margin: 0;
+  }
+  
+  /* Material option : text color and font size should be same for all  */
+  .mat-option-text {
+     color: #333333;
+     font-size: 1rem !important;
+     font-weight: 300;
+  }
+  
+  .back-link {
+    text-decoration:none;
+  }
+  
+  .ship-ui-input-wrapper {
+    border-width: 1px;
+    border-color: #ccc;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.75);
+    border: 1px solid #ccc;
+    width: 6.5rem;
+  }
+  
+  .ship-ui-input-field input[type="text"]{
+        padding-left: 1rem;
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.5rem;
+        letter-spacing: 0.5px;
+        color: #333333;
+  }
+  
+  input[type="text"] {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    letter-spacing: 0.5px;
+    color: #333333
+  }
+  
+  input[type="text"]:focus {
+    background: #fff;
+  }
+  
+  .ship-ui-inline-input {
+    width: 80%;
+    display: inline;
+    border: none;
+    margin: 0px;
+    box-shadow: none;
+    background: transparent;
+    height: 2.75rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .ship-ui-inline-input-label {
+    display: inline;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #333333;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+    margin: .25rem;
+  }
+  
+  .ship-ui-mat-select{
+     padding-left: 1rem;
+     padding-top: 10px;
+     padding-right: 10px;
+  }
+  
+  /* Material Dropdown: selected item's font size should be same across app */
+  .mat-select-panel .mat-option {
+    font-size: 1rem;
+  }
+  
+  /* Material Dropdown: Selected item text background color will be same across app */
+  .mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
+    background: transparent;
+    font-weight: 300;
+  }
+  
+  /* Material Dropdown: Item list text background color on hover/focus will be same across app */
+  .mat-option:focus:not(.mat-option-disabled), .mat-option:hover:not(.mat-option-disabled) {
+    background: #E5EFF9;
+  }
+  
+  /* Material Dropdown: display outline on focus*/
+  .mat-select:focus {
+    outline: #E5EFF9 auto 1px;
+  }
+  
+  .blue-label {
+    color: #0467C6 !important;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: Roboto;
+    font-weight: 300;
+  }
+  
+  .ship-back-icon {
+    height: 0.75rem;
+  }
+  
+  .delete-preference-icon {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  .ship-ui-label {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #333333;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+  }
+  
+  .ship-ui-label-light {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #333333;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+  }
+  
+  /* title */
+  .page-title {
+    font-weight: 300;
+    font-size: 2.25rem;
+    color: #111111;
+    letter-spacing: 0.5px;
+    line-height: 2.75rem;
+  }
+  .prefs-title-section {
+    padding-bottom: 3rem;
+    padding-top: 1.25rem;
+  }
+  
+  .page-title-section {
+    padding-bottom: 3rem;
+  }
+  
+  /* table css */
+  table {
+    width: 100%;
+  }
+  
+  th.mat-header-cell {
+    padding-left: 0 !important;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #333333;
+    text-align: left;
+    line-height: 1.5rem;
+  }
+  
+  td.mat-cell:first-of-type{
+    padding-left: 0 !important;
+    font-weight: 300 !important;
+    font-size: 1rem;
+    color: #333333;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+    height: 4.5rem;
+  }
+  
+  td.mat-cell {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .mat-tab-label {
+    background-color: #F0F0F0 !important;
+    height: 3.563rem !important;
+  }
+  
+  .mat-tab-label-active {
+    background-color:#FFFFFF !important;
+  }
+  
+  .mat-tab-list .mat-ink-bar {
+    background-color: #CA261A !important;
+    position: absolute !important;
+    top: 0;
+  }
+  
+  .mat-tab-label{
+    background: #F0F0F0;
+  }
+  
+  .mat-tab-label.mat-tab-label-active {
+    background: transparent;
+    border-bottom-style: none !important;
+  }
+  
+  .mat-tab-header.mat-tab-header-active {
+    border-bottom: 0;
+  }
+  
+  .mat-elevation-z8 {
+    box-shadow: none !important
+  }
+  
+  .mat-tab-label-content {
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: #111111;
+    letter-spacing: 0.3px;
+    line-height: 1.5rem;
+  }
+  
+  .mat-tab-group, .mat-tab-label, .mat-tab-content {
+    font-family: Roboto !important;
+  }
+  
+  /* override material paginator */
+  .mat-icon-button { /* THANKS FOUNDATION */
+    background-color: #ffffff !important;
+  }
+  
+  button.mat-icon-button:hover, button.mat-icon-button:focus,
+  .button.mat-icon-button:hover, .button.mat-icon-button:focus { /* Foundation reset */
+    color: inherit !important;
+  }
+  
+  .mat-paginator-icon {
+    width: 2rem !important;
+  }
+  
+  .mat-paginator-range-label {
+    font-size: 1rem;
+    margin: 0 2rem 0 2rem !important;
+    order: 2;
+  }
+  
+  .mat-paginator-navigation-previous {
+    order: 1;
+  }
+  
+  .mat-paginator-navigation-next {
+    order: 3;
+  }
+  
+  .table-row-data {
+    font-size: 1rem;
+    color: #333333;
+    font-weight: 300;
+  }
+  
+  /* snapship-angular : common padding */
+  
+  .bot-padding-72 {
+    padding-bottom: 4.5rem;
+  }
+  
+  /* Empty state style - Preferences/history */
+  
+  .empty-state-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .empty-state-title {
+    font-family: Roboto;
+    font-size: 1.5rem;
+    color: #111111;
+    letter-spacing: 0.2px;
+    text-align: center;
+    line-height: 2rem;
+    font-weight: 300;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  
+  .empty_table {
+    width: 98%;
+  }
+  
+  /* Display inline / block / inline-block */
+  .display-inline {
+    display: inline;
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-inline-block {
+    display: inline-block;
+  }
+  
+  .button {
+    background: #0467C6;
+    border-radius: 2px;
+    border-radius: 2px;
+  }
+  
+  .action-button {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #FFFFFF;
+    letter-spacing: 0.4px;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+  
+  .mat-select-value {
+    color: rgba(0,0,0,.87);
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #333333;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+  }
+  
+  /*Desktop version*/
+  @media screen and (min-width:640px) {
+  
+    .snapShip-mat-paginator {
+      padding-top: 1.5rem;
+      padding-bottom: 4rem;
+    }
+  
+    .back-button-section {
+      padding-top: 4rem;
+      padding-bottom: 3rem;
+    }
+  
+  
+    .preference-page .button {
+      border-radius: 2px;
+      border-radius: 2px;
+      font-family: Roboto;
+      height: 2.75rem !important;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.4px;
+      text-align: center;
+      line-height: 1.5rem;
+      margin: 0rem;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  
+    .ship-ui-primary {
+      background: #0467C6;
+      color: #FFFFFF;
+    }
+  
+    .ship-ui-primary:hover {
+      background: #004990;
+    }
+  
+    .ship-ui-secondary:hover,.ship-ui-secondary:focus {
+        border-radius: 2px;
+        border: solid 2px #004990;
+        background: #FFFFFF;
+        color: #004990;
+      }
+  
+    .ship-button-cancel, .ship-ui-secondary {
+      border: 1px solid #0467C6;
+      background: #FFFFFF;
+      color: #0467C6;
+    }
+  
+    .ship-button-cancel:hover {
+      border: 1px solid #0467C6;
+      background: #004990;
+      color: #FFFFFF;
+    }
+  
+    .ship-ui-add-button {
+      padding: 0;
+      width: 5.5rem;
+    }
+  }
+  
+  /*Mobile version*/
+  @media screen and (max-width:639px) {
+    .ship-ui-secondary:hover {
+      border-radius: 2px;
+      border: solid 2px #004990;
+      background: #FFFFFF;
+      color: #004990;
+    }
+  
+    .ship-ui-secondary {
+      border: 1px solid #0467C6;
+      background: #FFFFFF;
+      color: #0467C6;
+    }
+  
+    .snapShip-mat-paginator {
+      font-weight: 300;
+      font-size: 1rem;
+      color: #333333;
+      letter-spacing: 0.5px;
+      line-height: 1.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 2.375rem;
+    }
+  
+    .mat-paginator-range-actions {
+      margin: 0 auto;
+      text-align: center;
+      left: 50%;
+    }
+  
+    .back-button-section {
+      padding-top: 2rem;
+      padding-bottom: .75rem;
+    }
+  
+    .page-title {
+      padding-left: 0.625rem;
+      display: block;
+    }
+  
+    /*Empty state*/
+    .empty-state-title {
+      padding-top: 3rem;
+    }
+  
+    .empty_table {
+      width: 100%;
+    }
+  
+    .empty_table .row {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  
+    .empty-state-text-section {
+      padding-bottom: 4rem;
+    }
+  
+  }
+  
+  /* Form utility  */
+  .ship-ui-mat-form-field{
+    width: 100%;
+    height: 3.125rem;
+  }
+  
+  .ship-ui-province-dropdown{
+    border-radius: 2px;
+    border: solid 1px #cbcbcb;
+    margin-top: -4px;
+  
+  }
+  
+  .input-required, .input-invalid {
+    color: #CA261A;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding-top: 6px;
+  }
+  
+  .ship-ui-error, .mat-select.ship-ui-error, input[type="text"].ship-ui-error {
+    border: 1px solid #CA261A !important;
+    box-shadow: none;
+  }
+  
+  /* Removing up/down arrow for number input */
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  
+  /*Shipment page: panels component's steps /status */
+  .ship-ui-inactive-state {
+    color: #666666;
+    border-radius: 50%;
+    -moz-border-radius: .8rem;
+    border: 1px solid #666666;
+  }
+  
+  .ship-ui-saved-state {
+    background: #098A00;
+    border-radius: .8rem;
+    -moz-border-radius: .8rem;
+    color: #fff;
+  }
+  
+  .ship-ui-active-state {
+    color: #098A00;
+    border-radius: 50%;
+    border: 1px solid #098A00;
+  }
+  
+  .ship-ui-shipment-step {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 14px;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .ship-ui-saved-active-panel {
+    border-top: 2px solid #098A00;
+  }
+  
+  .ship-ui-inactive-panel {
+    border-top: 2px solid #CBCBCB;
+  }
+  
+  .ship-ui-bottom-border {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .ship-ui-description-text {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #333;
+    letter-spacing: .5px;
+    line-height: 1.5rem;
+  }
+  
+  .ship-ui-shipment-payment-label {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    letter-spacing: 0.5px;
+    color: #333333;
+    float: left;
+  }
+  
+  .ship-ui-shipment-price-label {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.3px;
+    color: #333333;
+    float: right;
+  }
+  
+  /* Added z-index to keep the nav bar on the top of Payment summary section layer. */
+  .snapship-ui #mainNav {
+    z-index: 1;
+  }
+  
+  .snapship-ui .button {
+    font-family: Roboto;
+    text-align: center;
+    height: 2.81rem;
+  }
+  
+  .ship-ui-icon {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    position: absolute;
+  }
+  .ship-ui-icon-size {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .trade {
+    font-size: 0.45em;
+    vertical-align: super;
+    font-weight: 400;
+    line-height:2em;
+  }
+  
+  .ship-ui-position-relative {
+    position: relative;
+  }
+  
+  .ship-ui-display-inline-block {
+    display: inline-block;
+  }
+  
+  .ship-ui-display-block {
+    display: block;
+  }
+  
+  .ship-ui-position-absolute {
+    position: absolute;
+  }
+  
+  .ship-ui-margin-top-0{
+    margin-top: 0;
+  }
+  
+  .ship-ui-margin-top-4 {
+    margin-top: .25rem;
+  }
+  
+  .ship-ui-margin-top-8 {
+    margin-top: .5rem;
+  }
+  
+  .ship-ui-margin-right-10 {
+    margin-right: 10px;
+  }
+  .ship-ui-margin-left-10 {
+    margin-left: 10px;
+  }
+  .ship-ui-margin-left-20 {
+    margin-left: 1.25rem;
+  }
+  
+  .ship-ui-margin-left-22 {
+    margin-left: 1.375rem;
+  }
+  
+  .ship-ui-margin-left-24 {
+    margin-left: 1.5rem;
+  }
+  
+  .ship-ui-margin-bottom-4 {
+    margin-bottom: 4px;
+  }
+  
+  .ship-ui-margin-bottom-8 {
+    margin-bottom: .5rem;
+  }
+  .ship-ui-margin-bottom-16 {
+    margin-bottom: 1rem;
+  }
+  .ship-ui-margin-bottom-24 {
+    margin-bottom: 1.5rem;
+  }
+  /*fix naming class name should match pixel value*/
+  .ship-ui-padding-top-10{
+    padding-top: 10px;
+  }
+  
+  .ship-ui-padding-top-1 {
+    padding-top: 1rem;
+  }
+  
+  .ship-ui-padding-top-24 {
+    padding-top: 1.5rem;
+  }
+  
+  .ship-ui-padding-top-32 {
+    padding-top: 2rem;
+  }
+  
+  .ship-ui-padding-bottom-24 {
+    padding-bottom: 1.5rem;
+  }
+  
+  .ship-ui-padding-left-4 {
+    padding-left: .25rem !important;
+  }
+  
+  .ship-ui-padding-left-6 {
+    padding-left: .375rem;
+  }
+  
+  .ship-ui-padding-left-8 {
+    padding-left: .5rem;
+  }
+  
+  .ship-ui-padding-left-14 {
+    padding-left: .875rem;
+  }
+  
+  .ship-ui-padding-left-16 {
+    padding-left: 1rem;
+  }
+  
+  .ship-ui-padding-right-8 {
+    padding-right: 8px;
+  }
+  
+  .ship-ui-padding-right-40 {
+    padding-right: 2.5rem;
+  }
+  
+  .ship-ui-padding-bottom-8 {
+    padding-bottom: 8px;
+  }
+  
+  .ship-ui-padding-bottom-16 {
+    padding-bottom: 1rem;
+  }
+  
+  .ship-ui-padding-bottom-32 {
+    padding-bottom: 2rem;
+  }
+  
+  .ship-ui-padding-bottom-10 {
+    padding-bottom: 10px;
+  }
+  
+  .ship-ui-padding-left-20 {
+    padding-left: 1.25rem;
+  }
+  
+  .ship-ui-padding-right-20 {
+    padding-right: 1.25rem;
+  }
+  
+  .ship-ui-primary-disabled {
+    background-color: #F0F0F0 !important;
+    color: #666666 !important;
+  }
+  
+  /* panel summary common styles */
+  .ship-ui-summary-label {
+    font-family: Roboto;
+    font-weight: 500;
+    line-height: 1.5rem;
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .ship-ui-summary-content {
+    font-family: Roboto;
+    font-weight: 300;
+    line-height: 1.5rem;
+    letter-spacing: normal;
+    color: #333333;
+  }
+  
+  .ship-ui-hint {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #666666;
+    text-align: left;
+    line-height: 1.5rem;
+  }
+  
+  .ship-ui-next-btn {
+    width: 5.3125rem;
+    height: 2.75rem;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .ship-ui-next-btn:focus {
+   background-color: #004990;
+  }
+  
+  .ship-ui-checkbox .mat-checkbox-layout {
+    white-space: normal !important;
+  }
+  
+  /** keep checkbox on first line */
+  .ship-ui-checkbox  .mat-checkbox-inner-container {
+    margin-top: 4px !important;
+  }
+  
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /** wrap label ie */
+    .ship-ui-checkbox  .mat-checkbox-layout {
+      display: block !important;
+    }
+  
+    .ship-ui-checkbox  .mat-checkbox-inner-container {
+      margin-top: 0 !important;
+    }
+  }
+  
+  /* Replacing mat check box default behaviour. This behaviour will apply to all material check box ( expected ) */
+  .mat-checkbox-layout .mat-checkbox-label {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #333333;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+  }
+  
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background: #0467C6;
+    border-radius: 1px;
+  }
+  
+  .mat-checkbox-checked.mat-accent.mat-checkbox-disabled .mat-checkbox-background {
+      background: #d9d9d9;
+  }
+  
+  .mat-checkbox-checked.mat-accent.mat-checkbox-disabled .mat-checkbox-background .mat-checkbox-checkmark .mat-checkbox-checkmark-path {
+      stroke: #666666 !important;
+  }
+  
+   /*overwrite the ripple overlay on hover and click*/
+  .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
+    background-color: transparent !important;
+  }
+  
+  /* Material checkbox: display outline of focus*/
+  .mat-checkbox:focus {
+    outline: #E5EFF9 auto 1px;
+  }
+  
+  .ship-ui-close-icon{
+    background: url(/snapshipui/assets/images/close.svg) no-repeat center center scroll;
+    top: 1rem;
+    right: 1rem;
+  }
+  .ship-ui-h3{
+    font-family: Roboto;
+    font-size: 1.5rem;
+    color: #111111;
+    line-height: 2rem;
+    letter-spacing: 0.2px;
+    font-weight: 300;
+  }
+  .ship-ui-height-48{
+    height: 3rem;
+  }
+  .ship-ui-width-455{
+    width: 28.4375rem;
+  }
+  
+  .ship-ui-new-window-icon {
+    background: url(/snapshipui/assets/images/new-window.svg) no-repeat center center scroll;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .mat-expansion-panel-header {
+    height: 3.5rem !important;
+  }
+  
+  .ship-ui-contextual-help-guide .mat-expansion-panel-body {
+    padding: 0;
+  }
+  
+  .ship-ui-contextual-help-guide .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+  }
+  
+  .ship-ui-contextual-help-guide .mat-expansion-panel-header {
+    border-radius: unset;
+  }
+  
+  .ship-ui-contextual-help-guide .mat-expansion-panel-spacing {
+    margin: 0;
+  }
+  
+  .ship-ui-contextual-help-guide .mat-expansion-panel-header {
+    padding-left: 2.375rem;
+    padding-right: 2.25rem;
+  }
+  
+  .ship-ui-guide-header .mat-expansion-indicator::after {
+    color: #fff;
+  }
+  
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding: 0;
+  }
+  
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    padding: 0;
+  }
+  
+  .ship-ui-link-label {
+    color: #0467c6;
+  }
+  
+  .ship-ui-screen-reader-text {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .mat-expansion-panel .mat-expansion-panel-content .mat-expansion-panel-body {
+      padding: 0 !important;
+    }
+  
+    .ship-ui-next-btn {
+      width: 18rem;
+    }
+  
+    .mat-checkbox-layout {
+       white-space: normal !important;
+    }
+  
+    .packageDetails .mat-radio-label {
+       white-space: normal !important;
+    }
+  }
+  

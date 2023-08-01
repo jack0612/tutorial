@@ -1,0 +1,26 @@
+<div class="ship-ui-modal">
+  <div class="ship-ui-modal-body">
+
+    <div class="close-img">
+      <img (click)="onClose()" (blur)="trapFocus()">
+    </div>
+
+    <h3 mat-dialog-title id="ship-ui-modal-header" tabindex=0
+      class="ship-ui-h3 ship-ui-h3-modal-width ship-ui-margin-top-0 ship-ui-margin-bottom-16">
+      {{modalInfo.headerText }}
+    </h3>
+    <mat-dialog-content class="ship-ui-summary-content ship-ui-margin-bottom-24">
+      {{modalInfo.bodyText }}
+    </mat-dialog-content>
+    <mat-dialog-actions class="ship-ui-height-48">
+      <button [mat-dialog-close]="true" cdkFocusInitial
+        class="button ship-ui-primary ship-ui-padding-top-10 ship-ui-padding-bottom-10 ship-ui-padding-left-20 ship-ui-padding-right-20"
+        color="primary" type="submit">{{modalInfo.submitBtnText }}</button>
+      <button mat-dialog-close
+        class="button ship-ui-secondary ship-ui-margin-left-20 ship-ui-padding-top-10 ship-ui-padding-bottom-10 ship-ui-padding-left-20 ship-ui-padding-right-20">{{modalInfo.cancelBtnText
+        }}</button>
+    </mat-dialog-actions>
+
+
+  </div>
+</div>

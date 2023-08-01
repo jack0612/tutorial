@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="45px" viewBox="0 0 37 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Checklist</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CCOPPD-754-Progress-bar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop_All" transform="translate(-1090.000000, -924.000000)">
+            <g id="Confirmation-State" transform="translate(87.000000, 909.000000)">
+                <g id="Checklist" transform="translate(998.000000, 13.000000)">
+                    <polyline id="Shape" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="31 26.6816958 31 34 16 34 16 19 28.2846568 19"></polyline>
+                    <polyline id="Shape" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="19 25.8958333 23.4913013 30 33 18"></polyline>
+                    <polyline id="Shape" stroke="#666666" stroke-width="2.04" stroke-linecap="round" stroke-linejoin="round" points="16.3141892 6 7 6 7 45 40 45 40 6 31.2027027 6"></polyline>
+                    <path d="M17.9707284,3 L29.0292716,3 C30.1176748,3 31,3.42706282 31,3.9538715 L31,6 L16,6 L16,3.9538715 C16,3.42706282 16.8823252,3 17.9707284,3 Z" id="Shape" stroke="#666666" stroke-width="2" fill="#666666" fill-rule="nonzero" stroke-linejoin="round"></path>
+                    <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="48" height="48"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

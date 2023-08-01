@@ -1,0 +1,34 @@
+
+ .center-table{
+    display:flex;
+   justify-content: center;
+}
+.flex-table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    display: flex;
+  }
+  
+  .flex-td, .flex-th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  .flex-th{
+      font-weight: bold;
+  }
+  
+  .flex-td:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+
+  .flex-tc{
+      display: flex;
+      flex-direction: column;
+  }
+
+ 
+   
+ 

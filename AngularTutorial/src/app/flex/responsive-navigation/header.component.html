@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+        <div fxLayoutAlign="space-between center">
+            <button mat-button>
+                <mat-icon>home</mat-icon>
+                <span class="logo">
+                    Technial Babaji
+                </span>
+            </button>
+            <div fxHide="true" fxShow.gt-xs  >
+                <button mat-button>Home</button>
+                <button mat-button>Contact us</button>
+                <button mat-button>About us</button>
+            </div>
+        </div>
+        <div>
+            <button mat-icon-button>
+                <mat-icon fxShow="true" fxHide.gt-xs>more_vert</mat-icon>
+                <span fxHide="true" fxShow.gt-xs>Menu</span>
+            </button>
+        </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row fxShow="true" fxHide.gt-xs xLayoutAlign="space-between end">
+        <button mat-button>Home2</button>
+        <button mat-button>Contact us</button>
+        <button mat-button>About us</button>
+    </mat-toolbar-row>
+
+</mat-toolbar>

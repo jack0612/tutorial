@@ -1,0 +1,22 @@
+<p>view-child works!</p>
+<!--ElementRef-->
+<input ngModel #username>
+<p>{{ username.value }}</p>
+<!--TemplateRef-->
+<ng-template #sayHelloTemplate>
+    <p> Say Hello</p>
+</ng-template>
+
+<!--ViewContainerRef-->
+<span>I am first span</span>
+<p #vc></p>
+<span>I am last span</span>
+
+<!--component-->
+<app-ng-template-outlet #sample></app-ng-template-outlet>
+
+<div>decimalOne directive</div>
+<!--directive-->
+<input matInput #inputReference decimalOne [(ngModel)]="primary"/>
+
+

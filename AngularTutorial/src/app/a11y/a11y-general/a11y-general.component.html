@@ -1,0 +1,61 @@
+<!--role and aria-checked attributes to explicitly identify the element as a checkbox 
+    and to specify that it is checked by default.
+ ARIA can modify existing element semantics or add semantics to elements where no native semantics exist.
+-->
+<li tabindex="0" class="checkbox" role="checkbox" checked aria-checked="true">
+    Receive promotional offers
+</li>
+
+<!-- ARIA can add extra label and description text that is only exposed to assistive technology APIs.-->
+<button aria-label="screen reader only label"></button>
+
+<!--aria-labelledby allows us to specify the ID of another element in the DOM as an element's label.-->
+<div role="region" aria-labelledby="filtersheading">
+    <h2 id="filtersheading">Filters</h2>
+
+<!--
+    Every interactive element needs text describing its function. 
+    Additional visually-associated descriptive text can be associated with aria-describedby. 
+    Like aria-labelledby, the descriptive element's id attribute value is referenced.
+-->
+<label for="password">Password:</label>
+<input id="password" aria-describedby="requirements">
+<p id="requirements">Your password must be at least 8 characters in length</p>
+
+<!--
+    If an input has a <label> and an aria-label or aria-labelledby, 
+    the <label> will not be read. Similarly, link/button text and image alt attribute values are overridden 
+    by ARIA label text.
+-->
+
+<!--alt is to provide alternative text for an image-->
+<img src="bobby.jpg" alt="My dog Bobby playing fetch in the park">
+
+<!--
+tabindex="1" (or any number greater than 1) defines an explicit tab or keyboard navigation order. This must always be avoided.
+tabindex="0" allows elements besides links and form elements to receive keyboard focus. 
+    It does not change the tab order, but places the element in the logical navigation flow, 
+    as if it were a link/button on the page.
+A tabindex="-1" value removes interactive elements from the default navigation flow. 
+    tabindex="-1" allows that element to receive programmatic focus. 
+    This means focus can be set to it using focus() scripting. This may be useful for elements that should not 
+    be navigated to directly using the Tab key, but need to have keyboard focus set to them. 
+    Examples include a modal dialog window that should be focused when it is opened, 
+    or a form submission error message that should be immediately focused when an errant form is submitted.
+-->
+
+<!--
+    https://egghead.io/q/aria
+-->
+ <div role="progressbar" tabindex="0"
+    aria-busy="true" aria-valuemin="0" aria-valuemax="100" aria-valuetest="please wait...">
+ </div>
+
+ <!--aria-current for current tab-->
+
+ <!--aria-expanded-->
+
+ <!--You can use document.activeElement from the console to figure out which element is currently focused.-->
+
+
+

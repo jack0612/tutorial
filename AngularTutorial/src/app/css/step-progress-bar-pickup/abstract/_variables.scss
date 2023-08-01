@@ -1,0 +1,17 @@
+$FONT-STACK               : 'Roboto','sans-serif'; //Font family is Roboto.
+$FONT-SIZE                : 1rem; //Base font size for the page is 16px
+$LINE-HEIGHT              : 24px;
+$LETTER_SPACING           : 0.5px;
+$Roboto-font-family       : (
+  'regular' : 400,
+  'light'   : 300,
+  'medium'  : 500
+);
+$COLUMN-GUTTER            : 1.875rem; //30px
+
+$breakpoints: (
+  'medium': 40em, //640px
+  'large' : 64em, //1024px
+) !default;
+
+$CONTENT-MAX-WIDTH              : 73rem; //Needed for very large screens

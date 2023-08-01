@@ -1,0 +1,23 @@
+<p>ng-template-outlet works!</p>
+
+<ng-template *ngTemplateOutlet="greet"></ng-template>
+<hr>
+<ng-template *ngTemplateOutlet="eng; context: myContext"></ng-template>
+<hr>
+<ng-container *ngTemplateOutlet="svk; context: myContext"></ng-container>
+<hr>
+
+<ng-template #greet><span>Hello</span></ng-template>
+<ng-template #eng let-name><span>Hello {{name}}!</span></ng-template>
+<ng-template #svk let-person="localSk"><span>Ahoj {{person}}!</span></ng-template>
+
+
+
+
+<h2>Using the ngTemplateOutlet</h2>
+<ng-template #sayHelloTemplate>
+  <p> Say Hello</p>
+</ng-template>
+<ng-container *ngTemplateOutlet="sayHelloTemplate">
+  This text is not displayed
+</ng-container>

@@ -1,0 +1,26 @@
+<form [formGroup]="myForm">
+    <mat-form-field>
+        <mat-label>yyyy-MM-dd</mat-label>
+        <input matInput formControlName="isoDate" (blur)="blurDate()">
+    </mat-form-field>
+
+    <mat-grid-list cols="4">
+
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile>
+                <!--mat-calendat is not an angular element-->
+            <mat-calendar   [selected]="selectedDate" [startAt]="startAt"
+                [minDate]="minDate" [maxDate]="maxDate" [dateFilter]="myDateFilter" (selectedChange)="onSelect($event)">
+            </mat-calendar>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+
+            <p  >{{DayAndDate}},---- {{year}}</p>
+
+            <p  >{{selectedDate}}</p>
+
+        </mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+    </mat-grid-list>
+</form>

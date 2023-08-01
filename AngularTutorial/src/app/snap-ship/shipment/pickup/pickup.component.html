@@ -1,0 +1,135 @@
+<div class="pickup-container" [formGroup]="pickupForm">
+
+    <div class="page-title">{{'SHIPUI.SHIPMENT.PICKUP.PAGE_TITLE' | translate}}</div>
+  
+    <div class="back-button-section">
+      <a (click)="goBack($event)" class="back-link">
+        <img class="ship-back-icon delete-preference-icon" alt="delete icon"
+             [src]="backImg">
+        <span class="blue-label">{{'SHIPUI.SHIPMENT.PICKUP.CANCEL_AND_GO_BACK' | translate}}</span>
+      </a>
+    </div>
+  
+    <div class="book-pickup-section">
+      <div class="section-title">
+        {{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.SUB_TITLE' | translate}}
+      </div>
+      <div class="book-pickup-desc">
+        <div class="book-pickup-desc-cost">{{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.COST' | translate}}</div>
+        <div class="book-pickup-desc-time">{{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.TIME' | translate}}</div>
+      </div>
+    </div>
+  
+    <div class="select-pickup-date-section">
+      <!--date calendar-->
+      <div class="section-title">{{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.SELECT_PICKUP_DATE' | translate }}</div>
+      <div class="calendar-sub-section">
+        <label class="date-input-label">{{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.DATE' | translate }}</label>
+        <div class="date-input">
+          <input formControlName="manualInputDate" class="date-input-field date-not-inputted" type="text" 
+            [placeholder]="DATE_FORMAT.toUpperCase()" (blur)="blurManualInputDate()">
+         
+        </div>
+        <mat-calendar [dateFilter]="dateFilter" [dateClass]="getHilightedDateClass()" [minDate]="minDate" [maxDate]="maxDate"
+          [selected]="selectedDate" (selectedChange)="onSelectDate($event)"></mat-calendar>
+        <div class="note-sub-section">
+          <div class="note-attention-box"></div>
+          <div class="note">{{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.NOTE' | translate }}</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="select-pickup-time-section">
+      <div class="section-title">{{ 'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.SELECT_PICKUP_TIME' | translate }}</div>
+      <div class="select-pickup-time-desc">{{ 'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.PICKUP_TIME_DESC' | translate }}</div>
+      <div class="selected-pickup-time-slots" *ngIf="pickupTimeSlots">
+        <div *ngFor="let slot of pickupTimeSlots;let i = index"  (click)="onMakeTimeSlotActive(i)" matRipple>
+          <div [ngClass]="{'active-pickup-time-slot':i==selectedPickupTimeSlotIndex}"></div>
+          <mat-card  class="selected-pickup-time-slot clickable">
+          <div class="selected-slot-date">{{slot.date}}</div>
+            <mat-card-content class="selected-slot-content">
+              <div>{{slot.time}}</div>
+              <div class="selected-slot-address">{{slot.address}}</div>
+              <div>{{slot.location}}</div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+  
+      <div class="pickup-time-options" 
+        *ngIf="!PickupTimeDropdownDeleted && !newPickupAdded && (!pickupTimeSlots || pickupTimeSlots.length==0 || displayAddAnotherPickup)">
+        <!--earliest time-->
+        <!---
+        <div class="ship-ui-padding-bottom-24 pickup-time-option">
+          <label class="ship-ui-label ship-ui-margin-bottom-4"
+            for="earliest-pickup">{{ 'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.PICKUP_TIME_EARLIEST_DROPDOWN_LABEL' | translate }}</label>
+          <mat-form-field class="ship-ui-mat-form-field">
+            <mat-label class="ship-ui-screen-reader-text" for="earliest-pickup">
+              {{ 'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.PICKUP_TIME_EARLIEST_DROPDOWN_LABEL' | translate }}</mat-label>
+            <mat-select class="ship-ui-province-dropdown ship-ui-mat-select" formControlName="earliestTime" id="earliest-pickup" (selectionChange)="onSelectTime()">
+              <mat-option [value]="NOT_SELECTED">{{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.PICKUP_DROPDOWN_DEFAULT_OPTION' | translate}}</mat-option>
+              <mat-option [value]="time" *ngFor="let time of earliestTimes">{{time}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    -->
+        <!--latest time-->
+        <!---
+        <div class="ship-ui-padding-bottom-24 pickup-time-option">
+          <label  class="ship-ui-label ship-ui-margin-bottom-4"
+            for="latest-pickup">{{ 'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.PICKUP_TIME_LATEST_DROPDOWN_LABEL' | translate }}</label>
+          <mat-form-field class="ship-ui-mat-form-field">
+            <mat-label  class="ship-ui-screen-reader-text" for="latest-pickup">
+              {{ 'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.PICKUP_TIME_LATEST_DROPDOWN_LABEL' | translate }}</mat-label>
+            <mat-select class="ship-ui-province-dropdown ship-ui-mat-select" formControlName="latestTime" id="latest-pickup" (selectionChange)="onSelectTime()">
+              <mat-option [value]="NOT_SELECTED">{{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.PICKUP_DROPDOWN_DEFAULT_OPTION' | translate}}</mat-option>
+              <mat-option [value]="time" *ngFor="let time of latesttTimes">{{time}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    -->
+        <a (click)="clickDeletePickupTimeDropdownButton()" class="pickup-time-option-delete-icon-container" href="javascript: void(0);" *ngIf="displayAddAnotherPickup">
+          <img src="assets/images/delete.svg" class="pickup-time-option-delete-icon">
+        </a>
+      </div>
+      <!--add another slot button-->
+      <a class="add-another-slot-link" 
+        *ngIf="pickupTimeSlots && pickupTimeSlots.length >0 && pickupTimeSlots.length < SLOT_LIMIT && !displayAddAnotherPickup && !newPickupAdded" (click)="clickAddAnotherSlotButton()">
+        {{'SHIPUI.SHIPMENT.PICKUP.BOOK_PICKUP.ADD_ANOTHER_TIME_SLOT' | translate}}
+      </a>
+      <!--pickup location-->
+      <!---
+      <div class="instruction-section">
+        <div class="section-title instruction-title">{{'SHIPUI.SHIPMENT.PICKUP.INSTRUCTIONS.SUB_TITLE' | translate}}</div>
+        <div class="ship-ui-padding-bottom-24">
+          <label  class="ship-ui-label ship-ui-margin-bottom-4"
+            for="driver-location">{{'SHIPUI.SHIPMENT.PICKUP.INSTRUCTIONS.DRIVER_LOCATION_LABEL' | translate}}</label>
+          <mat-form-field class="ship-ui-mat-form-field">
+            <mat-label  class="ship-ui-screen-reader-text" for="driver-location">
+              {{'SHIPUI.SHIPMENT.PICKUP.INSTRUCTIONS.DRIVER_LOCATION_LABEL' | translate}}</mat-label>
+            <mat-select class="ship-ui-province-dropdown ship-ui-mat-select instruction-field" formControlName="pickupLocation" id="driver-location">
+              <mat-option [value]="NOT_SELECTED">{{'SHIPUI.SHIPMENT.PICKUP.INSTRUCTIONS.DRIVER_LOCATION_DEFAULT_OPTION' | translate}}</mat-option>
+              <mat-option [value]="location" *ngFor="let location of PICKUP_LOCATIONS">{{location}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    -->
+        <!--additional instructions-->
+        <div class="additional-instruction-label">
+          <label class="ship-ui-label" for="optional-instructions">{{ 'SHIPUI.SHIPMENT.PICKUP.INSTRUCTIONS.ADDITIONAL_INSTRUCTION_LABEL' | translate}}</label>
+          <div class="additional-instruction-optional-label">{{ 'SHIPUI.SHIPMENT.PICKUP.INSTRUCTIONS.ADDITIONAL_INSTRUCTION_OPTIONAL_LABEL' | translate}}</div>
+        </div>
+        <input matInput class="instruction-field" type="text" id="optional-instructions" formControlName="instruction"
+          placeholder="{{ 'SHIPUI.SHIPMENT.PICKUP.INSTRUCTIONS.PLACEHOLDER' | translate}}">
+          <!--consent checkbox-->
+
+      </div>
+      <!--cancel pickup-->
+    <div class="button-row">
+      <button class="button ship-ui-primary"  (click)="submit()">{{ 'SHIPUI.SHIPMENT.PICKUP.SUBMIT_ACTION' | translate }}</button>
+      <button class="button secondary-button" (click)="cancel()">{{ 'SHIPUI.SHIPMENT.PICKUP.CANCEL_ACTION' | translate }}</button>
+    </div>
+  
+   
+  </div>
+  

@@ -1,0 +1,51 @@
+
+// CPC Branded Colours
+// Primary Colours
+
+$CP-RED               : #CA261A;
+$MID-BLUE             : #0467C6;
+$CP-BLUE              : #004990;
+$WHITE                : #fff;
+$BLACK                : #111;
+$OFF-BLACK            : #333;
+$CHARCOAL-GREY        : #666;
+$MID-GREY             : #CBCBCB;
+$GREY                 : #D9D9D9;
+$MID-LIGHT-GREY 		  : #E5E5E5;
+$LIGHT-GREY           : #F0F0F0;
+$GREY-GRADIENT-START  : #FAFAFA;
+$GREY-GRADIENT-END    : #F0F0F0;
+
+// Secondary Colours
+
+$morning-blue         : #DAEAF5;
+$GRASS-GREEN          : #098A00;
+$sunny-yellow         : #FFBF05;
+
+// Background Colours
+
+$red-alert            : #F9E9E8;
+$green-success        : #ECF6EB;
+$blue-info            : #DAEAF5;
+$yellow-amber         : #FFBF05;
+
+// Modal backdrop colours
+
+$backdrop-transparent: rgba(51, 51, 51, .85);
+$backdrop-solid: #5c5c5c;
+
+
+
+$PAGE-BACKGROUND-COLOR          : $MID-LIGHT-GREY;
+$CONTENT-BACKGROUND-COLOR       : $WHITE;
+$LINK-COLOR-ACTIVE              : $MID-BLUE;
+$BUTTON-COLOR-ACTIVE            : $LINK-COLOR-ACTIVE;
+$CHECKBOX-COLOR-ACTIVE          : $LINK-COLOR-ACTIVE;
+$RADIO-BUTTON-COLOR-SELECTED    : $LINK-COLOR-ACTIVE;
+$BUTTON-COLOR-HOVER             : $CP-BLUE;
+$TEXT-COLOR                     : $OFF-BLACK;
+$HEADER-COLOR                   : $BLACK;
+$RADIO-BUTTON-COLOR-UNSELECTED  : $CHARCOAL-GREY;
+$BORDER_COLOR_COMMON            : $MID-GREY;
+$BORDER_COLOR_ACTIVE_COMMON     : $CHARCOAL-GREY;
+$DROP_SHADOW_COMMON             : inset 0 0 1px $BORDER_COLOR_ACTIVE_COMMON;

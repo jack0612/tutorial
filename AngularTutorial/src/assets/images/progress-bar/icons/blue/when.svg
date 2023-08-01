@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Calendar</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Calendar" transform="translate(-2.000000, -1.000000)">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="48" height="48"></rect>
+            <path d="M3,5.56 L3,18.65 L45,18.65 L45,5.56 L3,5.56 Z M13,14.42 C12.0095187,14.428086 11.1124308,13.8365835 10.7296453,12.9230224 C10.3468598,12.0094613 10.5543414,10.9551401 11.2547408,10.2547408 C11.9551401,9.55434137 13.0094613,9.34685981 13.9230224,9.72964533 C14.8365835,10.1124308 15.428086,11.0095187 15.42,12 C15.4037136,13.3280922 14.3281482,14.399213 13,14.41 L13,14.42 Z M34.73,14.42 C33.7395187,14.428086 32.8424308,13.8365835 32.4596453,12.9230224 C32.0768598,12.0094613 32.2843414,10.9551401 32.9847408,10.2547408 C33.6851401,9.55434137 34.7394613,9.34685981 35.6530224,9.72964533 C36.5665835,10.1124308 37.158086,11.0095187 37.15,12 C37.1335744,13.3358445 36.0459455,14.410101 34.71,14.41 L34.73,14.42 Z" id="Shape" fill="#9BC2E8" fill-rule="nonzero"></path>
+            <path d="M3.87,18.65 L45,18.65" id="Path" stroke="#0467C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle id="Oval" stroke="#0467C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="12.98" cy="11.98" r="2.44"></circle>
+            <circle id="Oval" stroke="#0467C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="34.71" cy="11.98" r="2.44"></circle>
+            <polyline id="Path" stroke="#0467C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="34.66 43.12 3 43.12 3 5.56 45 5.56 45 32.85"></polyline>
+            <polygon id="Path" stroke="#0467C6" stroke-width="2" fill="#9BC2E8" stroke-linecap="round" stroke-linejoin="round" points="34.66 43.12 34.66 32.85 45 32.85"></polygon>
+            <path d="M12.98,9.54 L12.98,2.88" id="Path" stroke="#0467C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M34.71,9.54 L34.71,2.88" id="Path" stroke="#0467C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

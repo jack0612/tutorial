@@ -1,0 +1,30 @@
+<h3>Angular Material Select</h3>
+<form [formGroup]="bookForm" (ngSubmit)="onFormSubmit()">
+  <mat-form-field>
+    <mat-label>Select writer</mat-label>
+    <mat-select formControlName="writer" (selectionChange)="onWriterChange($event)">
+      <mat-option *ngFor="let writer of allWriters" [value]="writer">
+        {{writer.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="writer.hasError('required')">
+      Writer required.
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Select book</mat-label>
+    <mat-select formControlName="book" (selectionChange)="onBookChange($event)">
+      <mat-option *ngFor="let book of filteredBooks" [value]="book">
+        {{book.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="book.hasError('required')">
+      Book required.
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <br />
+  <button mat-raised-button>Submit</button>
+  <button mat-raised-button type="button" (click)="resetForm()">Reset</button>
+</form>

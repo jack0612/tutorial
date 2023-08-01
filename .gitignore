@@ -36,3 +36,7 @@ build/
 
 target/
 
+/AngularTutorial/node_modules
+
+.angular/
+

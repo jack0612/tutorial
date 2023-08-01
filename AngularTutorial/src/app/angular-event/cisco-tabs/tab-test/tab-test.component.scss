@@ -1,0 +1,16 @@
+.msx-form-builder-test {
+
+    &__form-section {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 6rem;
+    }
+
+    &__form-section-header {
+        margin-bottom: 2rem;
+    }
+
+    &__field {
+        width: 30rem;
+    }
+}

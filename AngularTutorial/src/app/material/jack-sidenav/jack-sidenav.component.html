@@ -1,0 +1,20 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side"  (openedChange)="openedChange()"
+                  >
+      Sidenav content
+    </mat-sidenav>
+  
+  
+    <mat-sidenav-content>
+      main content
+      <p> {{opened}}</p>
+     
+      <p><button mat-button color="primary" (click)="toggle()">Button: sidenav.toggle()</button></p>
+      <p>Events:</p>
+      <div class="example-events">
+        <div *ngFor="let e of events">{{e}}</div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+   

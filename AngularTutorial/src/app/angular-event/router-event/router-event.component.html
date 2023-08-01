@@ -1,0 +1,8 @@
+<nav class="nav">
+  <a routerLink="./section-a" class="nav__item">Section A</a>
+  <a routerLink="./section-b" class="nav__item">Section B</a>
+  <a routerLink="./section-c" class="nav__item">Section C</a>
+</nav>
+<button (click)="goto('section-a')" class="nav__item">button Section A</button>
+<button (click)="goto('section-b')" class="nav__item">button Section B</button>
+<router-outlet></router-outlet>

@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <form [formGroup]="myForm" autocomplete="off" novalidate>
+  
+      <!-- First Name -->
+      <text-input  [label]="'First Name'"
+                          [placeholder]="'e.g. John'"
+                          formControlName="firstName"
+                          [control]="myForm.get('firstName')">
+      </text-input>
+      <!-- /First Name -->
+  
+      <!-- Last Name -->
+      <text-input  [label]="'Last Name'"
+                          [placeholder]="'e.g. Doe'"
+                          formControlName="lastName"
+                          [control]="myForm.get('lastName')">
+      </text-input>
+      <!-- /Last Name -->
+  
+      <!-- Email Address -->
+      <text-input  [label]="'Email address'"
+                          [placeholder]="'e.g. john@doe.com'"
+                          formControlName="email"
+                          [control]="myForm.get('email')"
+                          [type]="'email'">
+      </text-input>
+      <!-- /Email Address -->
+  
+      <!-- Password -->
+      <text-input  [label]="'Password'"
+                          [placeholder]="'e.g. **** :) '"
+                          formControlName="password"
+                          [control]="myForm.get('password')"
+                          [type]="'password'">
+      </text-input>
+      <!-- /Password -->
+  
+      <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+    </form>
+  
+    {{myForm.value | json}}
+  </div>

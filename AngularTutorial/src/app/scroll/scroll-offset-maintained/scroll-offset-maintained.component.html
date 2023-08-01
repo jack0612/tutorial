@@ -1,0 +1,22 @@
+<p class="controls">
+    <strong>Use</strong>:
+    <a (click)="use( 'window' )">Window</a> or
+    <a (click)="use( 'container' )">Overflow Container</a>
+</p>
+<div
+    #viewportRef
+    id="viewport"
+    class="viewport"
+    [class.is-constrained]="( demoType === 'container' )">
+    <ng-template ngFor let-item [ngForOf]="newsItems">
+        <div class="news-item" [style.padding-bottom.px]="item.hook.length">
+            <strong class="news-item__hook">
+                {{ item.hook }}
+            </strong>
+            <span class="news-item__content">
+                {{ item.content }}
+            </span>
+        </div>
+    </ng-template>
+</div>
+<button (click)="addNewsItem()">add news item</button>

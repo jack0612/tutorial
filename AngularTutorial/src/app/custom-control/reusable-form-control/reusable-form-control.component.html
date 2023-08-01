@@ -1,0 +1,19 @@
+<h4>
+	Reusable Form Control
+</h4>
+
+<form [formGroup]="form">
+  <text-field [formControl]="form.controls['name']" >
+    Name:
+  </text-field>
+  <text-field [formControl]="form.controls['address']" >
+    Address:
+  </text-field>
+  
+  <button [disabled]="form.invalid || form.disabled"
+          class="btn btn-primary">Save</button>
+</form>
+
+<pre>
+  {{form.value | json}}
+</pre>

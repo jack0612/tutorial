@@ -1,0 +1,15 @@
+<div class="msx-tabs__carousel">
+	<button *ngIf="isHorizontal" #leftCarousel class="msx-tabs__shifter"  (click)="shiftLeft($event)">
+		<span class="sk-font-tab-label vms_fi_font_small vms_fi_nav1007-16 vms_fi_font_flip_x"></span>
+	</button>
+	<div class="msx-tabs__overflow-wrapper " [ngClass]="{'msx-tabs__overflow-wrapper--horizontal': isHorizontal, 'msx-tabs__overflow-wrapper--vertical': isVertical}"
+		><div  class="msx-tabs__list" [ngClass]="{'msx-tabs__list--horizontal': isHorizontal, 'msx-tabs__list--vertical': isVertical}"
+			><div [ngClass]="{'msx-tabs--horizontal': isHorizontal, 'msx-tabs--vertical': isVertical}">
+				<ng-content></ng-content>
+			</div
+		></div
+	></div>
+	<button  *ngIf="isHorizontal" #rightCarousel class="msx-tabs__shifter"   (click)="shiftRight($event)">
+		<span class="sk-font-tab-label vms_fi_font_small vms_fi_nav1007-16"></span>
+	</button
+></div>

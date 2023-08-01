@@ -1,0 +1,57 @@
+<!--NVDA: on input element,  aria-describedby will not be voiced-->
+<!--NVDA: on button element, when aria-labelledby and aria-describedby exist, both will  be voiced(aria-labelledby will be voiced first)-->
+<input id="manualInputDateId" #manualInputDate matInput type="text"
+    aria-labelledby="inputFieldVoiceId manualInputDateIndalidDateError manualInputDateOutOfRangeError"
+    placeholder="placeholder">
+
+<span id="inputFieldVoiceId" class="ship-ui-screen-reader-text">my input field</span>
+
+<div id="manualInputDateIndalidDateError" class="input-required date-input-error-meesage" role="alert"
+    aria-live="assertive">error 1 </div>
+<div id="manualInputDateOutOfRangeError" class="input-required date-input-error-meesage" role="alert"
+    aria-live="assertive">error 2 </div>
+
+
+
+
+
+<button aria-describedby="sort-description">
+
+    Name
+</button>
+
+<p id="sort-description" hidden>
+    Sort this table alphabetically by name.
+</p>
+
+
+
+<button aria-label="Close" aria-labelledby="inputFieldVoiceId" aria-describedby="descriptionClose"
+    onclick="myDialog.close()">X</button>
+
+
+
+<div id="descriptionClose">Closing this window will discard any information entered and
+    return you back to the main page</div>
+
+<div role="application" aria-labelledby="calendar" aria-describedby="info">
+    <h1 id="calendar">Calendar</h1>
+    <p id="info">
+        This calendar shows the game schedule for the Boston Red Sox.
+    </p>
+    <div role="grid">
+
+    </div>
+</div>
+
+
+<div role="alert" aria-live="assertive" aria-atomic="false" aria-relevant="all" *ngIf="isLive">
+    province
+    <div aria-live="assertive" aria-atomic="false" aria-relevant="all">
+        city {{isLive}}
+    </div>
+
+</div>
+
+<br />
+<button (click)="changeAriaLive()">aria-live test</button>

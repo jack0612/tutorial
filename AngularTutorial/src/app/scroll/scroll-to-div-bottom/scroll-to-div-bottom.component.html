@@ -1,0 +1,28 @@
+
+<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
+
+<button (click)="scrollDownButton()">scrollDown</button>
+<button (click)="scrollUpButton()">scrollUp</button>
+<br/><br/><br/><br/><br/>
+<div #myDiv id="myDiv" style="overflow-y:scroll; height:400px; width:100px;text-align:center">
+    <div *ngFor="let item of items">
+        <p>{{item}}</p>
+    </div>
+    <div id="upDiv" #upDiv>upDiv</div>
+    <div *ngFor="let item of items">
+        <p>{{item}}</p>
+    </div>
+</div>
+
+
+<div style="height:200px; width:300px; overflow:auto;border:3px solid green;"></div>
+<div style="height:200px; width:300px; overflow:auto;border:3px solid green;">
+<div id="myDiv2" style="width:250px; height:150px; border:1px solid red;">
+Return the top-left corner of this element relative to the top left corner of the viewport with the button below.<br>
+Also try to use the scrollbars to test the method for different positions.
+</div>
+<div style="width:1000px; height:1000px;border:4px solid yellow"></div>
+</div>
+<br>
+<button (click)="myFunction()">Get top-left corner + witdth and height of the element with red border</button>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Calendar_grey</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Calendar_grey" transform="translate(1.000000, 1.000000)">
+            <g id="Group">
+                <path d="M0,3.56 L0,16.65 L42,16.65 L42,3.56 L0,3.56 Z M10,12.42 C9.0095187,12.428086 8.11243085,11.8365835 7.72964533,10.9230224 C7.34685981,10.0094613 7.55434137,8.95514014 8.25474076,8.25474076 C8.95514014,7.55434137 10.0094613,7.34685981 10.9230224,7.72964533 C11.8365835,8.11243085 12.428086,9.0095187 12.42,10 C12.4037136,11.3280922 11.3281482,12.399213 10,12.41 L10,12.42 Z M31.73,12.42 C30.7395187,12.428086 29.8424308,11.8365835 29.4596453,10.9230224 C29.0768598,10.0094613 29.2843414,8.95514014 29.9847408,8.25474076 C30.6851401,7.55434137 31.7394613,7.34685981 32.6530224,7.72964533 C33.5665835,8.11243085 34.158086,9.0095187 34.15,10 C34.1335744,11.3358445 33.0459455,12.410101 31.71,12.41 L31.73,12.42 Z" id="Shape" fill="#D9D9D9" fill-rule="nonzero"></path>
+                <path d="M0.87,16.65 L42,16.65" id="Shape" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle id="Oval" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="9.98" cy="9.98" r="2.44"></circle>
+                <circle id="Oval" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="31.71" cy="9.98" r="2.44"></circle>
+                <polyline id="Shape" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="31.66 41.12 0 41.12 0 3.56 42 3.56 42 30.85"></polyline>
+                <polygon id="Shape" stroke="#666666" stroke-width="2" fill="#D9D9D9" stroke-linecap="round" stroke-linejoin="round" points="31.66 30.85 42 30.85 31.66 41.12"></polygon>
+                <path d="M9.98,7.54 L9.98,0.88" id="Shape" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M31.71,7.54 L31.71,0.88" id="Shape" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
