@@ -27,7 +27,7 @@ class SuperClass implements Cloneable {
 // Singleton class
 class Singleton extends SuperClass {
 	// public instance initialized when loading the class
-	public static Singleton instance = new Singleton();
+	public final static Singleton instance = new Singleton();
 
 	private Singleton() {
 		// private constructor

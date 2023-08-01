@@ -1,5 +1,7 @@
 package com.pokemonreview.api.CoreJava.Singleton;
 
+import static org.junit.Assert.assertThrows;
+
 import java.lang.reflect.Constructor;
 
 import org.junit.jupiter.api.Test;
@@ -15,13 +17,14 @@ public class SignletonTest_Reflection {
 				// Below code will destroy the singleton
 				// pattern
 				constructor.setAccessible(true);
+				System.out.println("---constructor"+ constructor+","+instance2);
 				instance2 = (Singleton3) constructor.newInstance();
 				break;
 			}
 		}
 
 		catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 
 		System.out.println("instance1.hashCode():- " + instance1.hashCode());
@@ -31,10 +34,11 @@ public class SignletonTest_Reflection {
 
 class Singleton3 {
 	// public instance initialized when loading the class
-	public static Singleton3 instance = new Singleton3();
+	public final static   Singleton3 instance = new Singleton3();
 
 	private Singleton3 Singleton3() throws RuntimeException {
-		//throw new RuntimeException();
-		return instance;
+		System.out.println("--------throw exception");
+		throw new RuntimeException();
+		//return instance;
 	}
 }
