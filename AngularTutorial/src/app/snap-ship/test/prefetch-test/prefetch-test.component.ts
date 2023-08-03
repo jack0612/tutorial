@@ -36,7 +36,7 @@ export class PrefetchTestComponent implements OnInit {
 
 
    
-  prefetchOnHover(){
+  public prefetchOnHover(){
     //console.log('111111111111 prefetchOnHover')
   }
 
