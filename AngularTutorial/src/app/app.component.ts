@@ -57,6 +57,8 @@ export class AppComponent {
     console.log('AppUtil', AppUtil)
   }
 
+
+  
   ngOnInit() {
     this.practiceBehaviourSubject();
     mapFitBounds(document.getElementById("map-canvas"), google);
