@@ -9,6 +9,6 @@ export interface PickupState {
 }
 
 export const initialPickupState: PickupState = {
-    [ENTRY_BOOKEDPICKUPS_OF_PICKUP]: new BookedPickupsDto(),
+    [ENTRY_BOOKEDPICKUPS_OF_PICKUP]: null,
     [ENTRY_BOOEDPICKUPSRESULTSTATE_OF_PICKUP]: LoadingState.INIT
 }

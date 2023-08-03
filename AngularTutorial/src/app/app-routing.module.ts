@@ -27,6 +27,7 @@ import { DummyComponentComponent } from './dummy-component/dummy-component.compo
 import { MyGoogleMapsComponent } from './google-maps/google-maps.component';
 import { MyTypescriptComponent } from './my-typescript/my-typescript.component';
 import { AngularElementsComponent } from './angular-elements/angular-elements.component'
+import { MyEchartComponent } from './my-echart/my-echart/my-echart.component';
 
 const routes: Routes = [
     { path: 'app-flex', component: FlexComponent },
@@ -57,6 +58,7 @@ const routes: Routes = [
     { path: 'cdk', component: CdkComponent },
     { path: 'mercury', component: MercuryComponent },
     { path: 'typescript', component: MyTypescriptComponent },
+    { path: 'chart', component: MyEchartComponent },
 
 ];
 

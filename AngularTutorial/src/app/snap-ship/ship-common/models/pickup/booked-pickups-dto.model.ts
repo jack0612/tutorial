@@ -6,7 +6,7 @@ export interface BookedPickup {
     instruction: string;
   }
   
-  export class BookedPickupsDto {
-    bookedPickups: BookedPickup[]=[];
-    preferedBookedPickupIndex: number=0
+  export interface BookedPickupsDto {
+    bookedPickups: BookedPickup[];
+    preferedBookedPickupIndex: number
   }

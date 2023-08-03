@@ -1,6 +1,5 @@
 import { FormControl, FormGroup } from "@angular/forms";
 import { GlobalConstants } from "../constants/global-constants";
-import { TranslateService } from "@ngx-translate/core";
 
 
 export class AppUtil {
@@ -63,10 +62,10 @@ export class AppUtil {
   }
 
 
-  static getErrorMessage(numberOfErrors:number, notificationEnum:any, translate:TranslateService) {
+  static getErrorMessage(numberOfErrors, notificationEnum, translate) {
     if (numberOfErrors > 0) {
       return {
-        msgType: notificationEnum['errorMsg'],
+        msgType: notificationEnum.errorMsg,
         msgContent: translate.instant('SHIPUI.CUSTOMSITEM.ERROR_NOTIFICATION', { numOfErrors: numberOfErrors }),
         displayErrorNotification: true
       }

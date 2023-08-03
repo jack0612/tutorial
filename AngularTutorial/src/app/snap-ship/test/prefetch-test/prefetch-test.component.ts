@@ -11,7 +11,7 @@ export class PrefetchTestComponent implements OnInit {
     
    }
  
-  registerForm: FormGroup|null=null;
+  registerForm: FormGroup;
   submitted = false;
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -23,12 +23,12 @@ export class PrefetchTestComponent implements OnInit {
   }
 
   get registerFormControl() {
-    return this.registerForm&&this.registerForm.controls;
+    return this.registerForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.registerForm&&this.registerForm.valid) {
+    if (this.registerForm.valid) {
       alert('Form Submitted succesfully!!!\n Check the values in browser console.');
       console.table(this.registerForm.value);
     }
@@ -36,7 +36,7 @@ export class PrefetchTestComponent implements OnInit {
 
 
    
-  public prefetchOnHover(){
+  prefetchOnHover(){
     //console.log('111111111111 prefetchOnHover')
   }
 

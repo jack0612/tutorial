@@ -18,8 +18,8 @@ import { TwainService } from './twain.service';
 })
 export class AsyncSpyComponent implements OnInit {
 
-  errorMessage: string='';
-  quote: Observable<string>|null=null;
+  errorMessage: string;
+  quote: Observable<string>;
 
   constructor(private twainService: TwainService) {}
 

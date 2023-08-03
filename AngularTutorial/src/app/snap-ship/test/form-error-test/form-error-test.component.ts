@@ -21,7 +21,7 @@ export class FormErrorTestComponent implements OnInit {
 
  
 
-  registerForm: FormGroup|null=null;
+  registerForm: FormGroup;
   submitted = false;
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -33,19 +33,19 @@ export class FormErrorTestComponent implements OnInit {
   }
 
   get registerFormControl() {
-    return this.registerForm && this.registerForm.controls;
+    return this.registerForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.registerForm && this.registerForm.valid) {
+    if (this.registerForm.valid) {
       alert('Form Submitted succesfully!!!\n Check the values in browser console.');
       console.table(this.registerForm.value);
     }
   }
 
 
-  form: FormGroup|null=null;
+  form: FormGroup;
   
   _buildForm(fb: FormBuilder) {
   
@@ -58,11 +58,11 @@ export class FormErrorTestComponent implements OnInit {
   }
     
   get f(){
-    return this.form&&this.form.controls;
+    return this.form.controls;
   }
    
   submit(){
-    console.log(this.form&&this.form.value);
+    console.log(this.form.value);
   }
 
   prefetchData(){

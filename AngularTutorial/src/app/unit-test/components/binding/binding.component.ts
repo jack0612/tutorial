@@ -9,6 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BindingComponent  {
   title = 'Test Tour of Heroes';
-  nameInput:string='';
+  nameInput;
 
 }

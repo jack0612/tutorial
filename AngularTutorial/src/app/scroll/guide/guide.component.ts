@@ -11,14 +11,14 @@ import { GuideConstants } from './guide.constants'
 
 })
 export class GuideComponent implements OnInit, AfterViewInit {
-  @ViewChild('guideContainer', { static: true }) _guideContainer: ElementRef | null = null;
-  panelOpenState: boolean = false;
+  @ViewChild('guideContainer', { static: true }) _guideContainer: ElementRef;
+  panelOpenState: boolean;
   recipientAddressIsDomestic: boolean = true;
   isUserConsumer: boolean = false;
   isMidMarketUser: boolean = false;
   displayGuideForMobile: boolean = false;
-  previousActiveElement: any = null;
-  favoriteSeason = null;
+  previousActiveElement;
+  favoriteSeason;
   public keyValuePipe;
 
   constructor(private _renderer: Renderer2,
@@ -47,8 +47,7 @@ export class GuideComponent implements OnInit, AfterViewInit {
 
   hideGuide(): void {
     this.displayGuideForMobile = false;
-    const el: any= this.previousActiveElement;
-    el && el.focus();
+    this.previousActiveElement.focus();
   }
 
   trapFocus(): void {
@@ -64,7 +63,7 @@ export class GuideComponent implements OnInit, AfterViewInit {
 
 
 
-  private _childSection = null;
+  private _childSection;
 
 
   private _tops = null;
@@ -131,7 +130,7 @@ export class GuideComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private _getClassName(classList:any) {
+  private _getClassName(classList) {
     let result = [];
     for (let name of classList) {
       if (name.includes('guide-')) {
@@ -147,14 +146,14 @@ export class GuideComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private _display(childSection:any) {
+  private _display(childSection) {
     let childElement = document.getElementsByClassName(childSection);
     let top = null;
     console.log('_display', childSection, childElement)
     if (childElement && childElement[0]) {
       top = childElement[0].getBoundingClientRect().top;
-      console.log(childSection + ' current top:', Math.round(top) + ' @' + (new Date().getMilliseconds()) % 10000
-        + ' times:', this._times, this._oneMoreTimes)
+      console.log(childSection + ' current top:', Math.round(top) + ' @' + (new Date().getMilliseconds()) % 10000 
+      + ' times:', this._times,this._oneMoreTimes)
     }
     return top;
   }
@@ -163,7 +162,7 @@ export class GuideComponent implements OnInit, AfterViewInit {
   _times = 0;
   scrollIntoView(childSection: string): void {
     let container = document.getElementsByClassName('ship-ui-guide-contents');
-    let newTop = this._tops&&(this._tops[childSection] - this._tops['ship-ui-guide-contents']);
+    let newTop = this._tops[childSection] - this._tops['ship-ui-guide-contents'];
     console.log('@@@@' + this._eventClicked + ',' + childSection + ' scrollIntoView._scrollTo', newTop)
     if (this._eventClicked) {
       this._eventClicked = false;
@@ -181,7 +180,7 @@ export class GuideComponent implements OnInit, AfterViewInit {
   }
 
   private _oneMoreTimes = 0;
-  private _scrollTo(container:any, childSection:any, newTop:any) {
+  private _scrollTo(container, childSection, newTop) {
     setTimeout(
       () => {
         this._times++;
@@ -205,7 +204,7 @@ export class GuideComponent implements OnInit, AfterViewInit {
   }
 
 
-  _isInViewport(childSection:any) {
+  _isInViewport(childSection) {
     let container = document.getElementsByClassName('ship-ui-guide-contents');
     let containerBcr = container[0].getBoundingClientRect();
     let childElement = document.getElementsByClassName(childSection);
@@ -233,11 +232,11 @@ export class GuideComponent implements OnInit, AfterViewInit {
     //this.expandGuide(GuideConstants.SHIPMENT.PACKAGE.PACKAGE, GuideConstants.SHIPMENT.PACKAGE.PREPAID_ENVELOPE);
     //this.expandGuide(GuideConstants.SHIPMENT.FROM.FROM, GuideConstants.SHIPMENT.FROM.SENDER_ADDRESS);
 
-    let childSection:any = this._childSection;
-    let newTop = this._tops&&(this._tops[childSection] - this._tops['ship-ui-guide-contents']);
+    let childSection = this._childSection;
+    let newTop = this._tops[childSection] - this._tops['ship-ui-guide-contents'];
     let container = document.getElementsByClassName('ship-ui-guide-contents');
     let containerTop = this._getContainerTop();
-  
+    console.log({ newTop, childSectionTop: this._tops[childSection], previousContainerTop: this._tops['ship-ui-guide-contents'], containerTop })
     //this._guideContainer.nativeElement.scrollTop=newTop;
     container[0].scrollTo({ top: newTop });
 
@@ -252,7 +251,7 @@ export class GuideComponent implements OnInit, AfterViewInit {
   }
   panels = {};
   items = []
-  panelKeys:any;
+  panelKeys;
   private _convert() {
     this.panels = (this.constants)
     this.panelKeys = Object.keys(this.constants);
