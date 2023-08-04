@@ -1,0 +1,30 @@
+
+
+
+<form class="form" [formGroup]="registerForm">
+ 
+    <br>
+    <div class="form-group">
+        <label>prefetchOnHover</label>
+        <br/>
+        <input type="text" class="form-control" formControlName='email1'  
+        [prefetchOnHover]="prefetchOnHover">
+    </div>
+    <br/>
+    <br/>
+
+    <div class="form-group">
+        <label>prefetchOnValueChanges</label>
+        <br/>
+        <input type="text" class="form-control" formControlName='email2'
+        [prefetchOnValueChanges]="prefetchOnValueChanges" >
+    </div>
+   
+</form>
+  
+ 
+
+
+
+
+
